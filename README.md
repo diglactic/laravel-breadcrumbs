@@ -39,14 +39,21 @@ A simple [Laravel](https://laravel.com/)-style way to create breadcrumbs.
 
 ### 1. Install Laravel Breadcrumbs
 
-Run this at the command line:
+Merge the following into your `composer.json`:
 
 ```bash
-composer require davejamesmiller/laravel-breadcrumbs:5.x
+"require": [
+    {
+        "diglactic/laravel-breadcrumbs": "6|7.x-dev",
+    }
+],
+"repositories": [
+    {
+        "type": "git",
+        "url": "https://github.com/diglactic/laravel-breadcrumbs.git"
+    }
+]
 ```
-
-This will update `composer.json` and install the package into the `vendor/` directory.
-
 
 ### 2. Define your breadcrumbs
 
