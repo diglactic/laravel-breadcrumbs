@@ -30,7 +30,8 @@ A simple [Laravel](https://laravel.com/)-style way to create breadcrumbs.
 
 | Laravel Breadcrumbs                                                    | Laravel      | PHP  |
 |------------------------------------------------------------------------|--------------|------|
-| **5.3.2**                                                              | 5.6+         | 7.1+ |
+| **6.x**                                                                | 6.x          | 7.2+ |
+| **7.x**                                                                | 7.x          | 7.3+ |
 
 
  Getting Started
