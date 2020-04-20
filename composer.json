@@ -4,11 +4,15 @@
     "keywords": [
         "laravel"
     ],
-    "homepage": "https://github.com/davejamesmiller/laravel-breadcrumbs",
+    "homepage": "https://github.com/diglactic/laravel-breadcrumbs",
     "authors": [
         {
             "name": "Dave James Miller",
             "email": "dave@davejamesmiller.com"
+        },
+        {
+            "name": "Sheng Slogar",
+            "email": "sheng@diglactic.com"
         }
     ],
     "license": "MIT",
