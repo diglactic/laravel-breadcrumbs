@@ -10,3 +10,4 @@
 
 # Operating system files
 .DS_Store
+.idea/
