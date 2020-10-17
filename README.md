@@ -897,7 +897,7 @@ API Reference
 | `Breadcrumbs::setCurrentRoute(string $name, mixed $param1, ...)`    | void       | 2.2.0    |
 | `Breadcrumbs::clearCurrentRoute()`                                  | void       | 2.2.0    |
 
-[Source](classes/BreadcrumbsManager.php)
+[Source](src/BreadcrumbsManager.php)
 
 
 ### Defining breadcrumbs
@@ -928,7 +928,7 @@ Breadcrumbs::after(function (BreadcrumbsGenerator $trail) {
 | `$trail->parent(string $name)`                          | void    | 1.0.0    |
 | `$trail->parent(string $name, mixed $param1, ...)`      | void    | 1.0.0    |
 
-[Source](classes/BreadcrumbsGenerator.php)
+[Source](src/BreadcrumbsGenerator.php)
 
 
 ### In the view (template)
@@ -945,7 +945,7 @@ Breadcrumbs::after(function (BreadcrumbsGenerator $trail) {
 | `$breadcrumb->url`                   | string / null | 1.0.0    |
 | `$breadcrumb->custom_attribute_name` | mixed         | 2.3.0    |
 
-[Source](classes/BreadcrumbsGenerator.php#L96)
+[Source](src/BreadcrumbsGenerator.php#L96)
 
 
 ### Configuration file

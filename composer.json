@@ -33,7 +33,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "DaveJamesMiller\\Breadcrumbs\\": "classes/"
+            "DaveJamesMiller\\Breadcrumbs\\": "src/classes/"
         }
     },
     "autoload-dev": {

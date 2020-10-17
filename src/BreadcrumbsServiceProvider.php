@@ -53,7 +53,7 @@ class BreadcrumbsServiceProvider extends ServiceProvider //implements Deferrable
     public function boot(): void
     {
         // Register 'breadcrumbs::' view namespace
-        $this->loadViewsFrom(__DIR__ . '/../views/', 'breadcrumbs');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'breadcrumbs');
 
         // Publish the config/breadcrumbs.php file
         $this->publishes([
