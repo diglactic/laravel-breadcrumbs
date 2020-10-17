@@ -33,10 +33,11 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
+            "DaveJamesMiller\\Breadcrumbs\\": "src/Deprecated/",
             "Diglactic\\Breadcrumbs\\": "src/"
         },
         "files": [
-            "src/deprecated.php"
+            "src/Deprecated/alias.php"
         ]
     },
     "autoload-dev": {
