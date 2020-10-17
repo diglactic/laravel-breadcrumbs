@@ -5,7 +5,6 @@ namespace Diglactic\Breadcrumbs\Tests;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator;
 use Illuminate\Support\Collection;
-use URL;
 
 class CustomGeneratorTest extends TestCase
 {

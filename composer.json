@@ -41,6 +41,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\Http\\": "tests/Http/",
             "Diglactic\\Breadcrumbs\\Tests\\": "tests/"
         }
     },

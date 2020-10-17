@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\ServiceProvider;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 use Spatie\Snapshots\MatchesSnapshots;

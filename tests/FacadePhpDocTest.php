@@ -2,7 +2,8 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Manager;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use ReflectionClass;
@@ -51,7 +52,7 @@ class FacadePhpDocTest extends TestCase
 
     public function testBreadcrumbsFacade()
     {
-        $class = new ReflectionClass(Breadcrumbs::class);
+        $class = new ReflectionClass(Manager::class);
         $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
 
         $macroableTrait = new ReflectionClass(Macroable::class);

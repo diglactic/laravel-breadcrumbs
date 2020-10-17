@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Diglactic\BreadcrumbsFacades\Facade;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Route;
 use LogicException;
@@ -22,14 +22,14 @@ class RegisterFunctionTest extends TestCase
         // Home
         Route::name('home')->get('/', $closure);
 
-        Facade::register('home', function ($breadcrumbs) {
+        Breadcrumbs::register('home', function ($breadcrumbs) {
             $breadcrumbs->push('Home', route('home'));
         });
 
         // Home > About
         Route::name('about')->get('about', $closure);
 
-        Facade::register('about', function ($breadcrumbs) {
+        Breadcrumbs::register('about', function ($breadcrumbs) {
             $breadcrumbs->parent('home');
             $breadcrumbs->push('About', route('about'));
         });
@@ -37,7 +37,7 @@ class RegisterFunctionTest extends TestCase
         // Home > Blog
         Route::name('blog')->get('blog', $closure);
 
-        Facade::register('blog', function ($breadcrumbs) {
+        Breadcrumbs::register('blog', function ($breadcrumbs) {
             $breadcrumbs->parent('home');
             $breadcrumbs->push('Blog', route('blog'));
         });
@@ -45,7 +45,7 @@ class RegisterFunctionTest extends TestCase
         // Home > Blog > [Category]
         Route::name('category')->get('blog/category/{category}', $closure);
 
-        Facade::register('category', function ($breadcrumbs, $category) {
+        Breadcrumbs::register('category', function ($breadcrumbs, $category) {
             $breadcrumbs->parent('blog');
             $breadcrumbs->push($category->title, route('category', $category->id));
         });
@@ -53,7 +53,7 @@ class RegisterFunctionTest extends TestCase
         // Home > Blog > [Category] > [Post]
         Route::name('post')->get('blog/post/{post}', $closure);
 
-        Facade::register('post', function ($breadcrumbs, $post) {
+        Breadcrumbs::register('post', function ($breadcrumbs, $post) {
             $breadcrumbs->parent('category', $post->category);
             $breadcrumbs->push($post->title, route('post', $post->id));
         });
@@ -72,7 +72,7 @@ class RegisterFunctionTest extends TestCase
 
     public function testGenerate()
     {
-        $breadcrumbs = Facade::generate('post', $this->post);
+        $breadcrumbs = Breadcrumbs::generate('post', $this->post);
 
         $this->assertCount(4, $breadcrumbs);
 
@@ -91,7 +91,7 @@ class RegisterFunctionTest extends TestCase
 
     public function testRenderHome()
     {
-        $rendered = Facade::render('home');
+        $rendered = Breadcrumbs::render('home');
         $html = $rendered->toHtml();
 
         $this->assertInstanceOf(Htmlable::class, $rendered);
@@ -105,7 +105,7 @@ class RegisterFunctionTest extends TestCase
 
     public function testRenderBlog()
     {
-        $html = Facade::render('blog')->toHtml();
+        $html = Breadcrumbs::render('blog')->toHtml();
 
         $this->assertXmlStringEqualsXmlString('
             <ol>
@@ -117,7 +117,7 @@ class RegisterFunctionTest extends TestCase
 
     public function testRenderCategory()
     {
-        $html = Facade::render('category', $this->category)->toHtml();
+        $html = Breadcrumbs::render('category', $this->category)->toHtml();
 
         $this->assertXmlStringEqualsXmlString('
             <ol>
@@ -130,7 +130,7 @@ class RegisterFunctionTest extends TestCase
 
     public function testRenderPost()
     {
-        $html = Facade::render('post', $this->post)->toHtml();
+        $html = Breadcrumbs::render('post', $this->post)->toHtml();
 
         $this->assertXmlStringEqualsXmlString('
             <ol>

@@ -3,6 +3,7 @@
 namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\ServiceProvider;
 
 class CustomChildServiceProviderTest extends TestCase
 {
