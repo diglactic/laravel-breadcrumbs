@@ -2,8 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Route;
+use Illuminate\Support\Facades\Route;
 use URL;
 
 class ReadmeTest extends TestCase

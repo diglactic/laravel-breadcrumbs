@@ -17,7 +17,7 @@ class ServiceProvider extends BaseServiceProvider implements DeferrableProvider
      */
     public function provides(): array
     {
-        return [Breadcrumbs::class];
+        return [Manager::class];
     }
 
     /**
@@ -31,7 +31,7 @@ class ServiceProvider extends BaseServiceProvider implements DeferrableProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/breadcrumbs.php', 'breadcrumbs');
 
         // Register Manager class singleton with the app container
-        $this->app->singleton(Breadcrumbs::class, config('breadcrumbs.manager-class'));
+        $this->app->singleton(Manager::class, config('breadcrumbs.manager-class'));
 
         // Register Generator class so it can be overridden
         $this->app->bind(Generator::class, config('breadcrumbs.generator-class'));
@@ -82,7 +82,7 @@ class ServiceProvider extends BaseServiceProvider implements DeferrableProvider
 
         // Support both Breadcrumbs:: and $breadcrumbs-> syntax by making $breadcrumbs variable available
         /** @noinspection PhpUnusedLocalVariableInspection */
-        $breadcrumbs = $this->app->make(Breadcrumbs::class);
+        $breadcrumbs = $this->app->make(Manager::class);
 
         // Support both a single string filename and an array of filenames (e.g. returned by glob())
         foreach ((array)$files as $file) {

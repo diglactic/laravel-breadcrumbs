@@ -2,8 +2,8 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Config;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Illuminate\Support\Facades\Config;
 
 class ExceptionsTest extends TestCase
 {
@@ -15,8 +15,10 @@ class ExceptionsTest extends TestCase
         $this->expectException(\Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException::class);
         $this->expectExceptionMessage('Breadcrumb name "duplicate" has already been registered');
 
-        Breadcrumbs::for('duplicate', function () { });
-        Breadcrumbs::for('duplicate', function () { });
+        Breadcrumbs::for('duplicate', function () {
+        });
+        Breadcrumbs::for('duplicate', function () {
+        });
     }
 
     public function testInvalidBreadcrumbException()

@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class RecursionTest extends TestCase
 {
@@ -15,9 +15,9 @@ class RecursionTest extends TestCase
             $trail->push('Blog', url('/'));
         });
 
-        $this->category1 = (object) ['id' => 1, 'title' => 'Category 1'];
-        $this->category2 = (object) ['id' => 2, 'title' => 'Category 2'];
-        $this->category3 = (object) ['id' => 3, 'title' => 'Category 3'];
+        $this->category1 = (object)['id' => 1, 'title' => 'Category 1'];
+        $this->category2 = (object)['id' => 2, 'title' => 'Category 2'];
+        $this->category3 = (object)['id' => 3, 'title' => 'Category 3'];
     }
 
     public function testRepeatedPush()

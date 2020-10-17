@@ -35,7 +35,9 @@
         "psr-4": {
             "Diglactic\\Breadcrumbs\\": "src/"
         },
-        "files": ["src/deprecated.php"]
+        "files": [
+            "src/deprecated.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -48,7 +50,7 @@
                 "Diglactic\\Breadcrumbs\\ServiceProvider"
             ],
             "aliases": {
-                "Breadcrumbs": "Diglactic\\Breadcrumbs\\Facade"
+                "Breadcrumbs": "Diglactic\\Breadcrumbs\\Breadcrumbs"
             }
         }
     }

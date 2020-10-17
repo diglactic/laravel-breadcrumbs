@@ -2,11 +2,8 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Config;
-use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Manager;
 use Illuminate\Support\Collection;
-use Route;
 use URL;
 
 class CustomManagerTest extends TestCase
@@ -21,13 +18,13 @@ class CustomManagerTest extends TestCase
 
     public function testCustomManager()
     {
-        $breadcrumbs = Breadcrumbs::generate();
+        $breadcrumbs = Manager::generate();
 
         $this->assertSame('custom-manager', $breadcrumbs[0]);
     }
 }
 
-class CustomBreadcrumbs extends Breadcrumbs
+class CustomBreadcrumbs extends Manager
 {
     public function generate(string $name = null, ...$params): Collection
     {

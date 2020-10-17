@@ -2,8 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Config;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class SingleFileLoadingTest extends TestCase
 {

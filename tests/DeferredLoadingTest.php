@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Contracts\Console\Kernel;
 use LogicException;
 

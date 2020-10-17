@@ -2,11 +2,9 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Config;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator;
 use Illuminate\Support\Collection;
-use Route;
 use URL;
 
 class CustomGeneratorTest extends TestCase

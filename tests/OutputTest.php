@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class OutputTest extends TestCase
 {
@@ -27,8 +27,8 @@ class OutputTest extends TestCase
             $trail->push($category->title, url("blog/category/{$category->id}"));
         });
 
-        $this->category = (object) [
-            'id'    => 456,
+        $this->category = (object)[
+            'id' => 456,
             'title' => 'Sample Category',
         ];
 

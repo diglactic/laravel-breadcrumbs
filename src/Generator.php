@@ -37,7 +37,7 @@ class Generator
     public function generate(array $callbacks, array $before, array $after, string $name, array $params): Collection
     {
         $this->breadcrumbs = new Collection;
-        $this->callbacks   = $callbacks;
+        $this->callbacks = $callbacks;
 
         foreach ($before as $callback) {
             $callback($this);
@@ -61,7 +61,7 @@ class Generator
      */
     protected function call(string $name, array $params): void
     {
-        if (! isset($this->callbacks[ $name ])) {
+        if (!isset($this->callbacks[$name])) {
             throw new InvalidBreadcrumbException($name);
         }
 
@@ -93,6 +93,6 @@ class Generator
      */
     public function push(string $title, string $url = null, array $data = []): void
     {
-        $this->breadcrumbs->push((object) array_merge($data, compact('title', 'url')));
+        $this->breadcrumbs->push((object)array_merge($data, compact('title', 'url')));
     }
 }

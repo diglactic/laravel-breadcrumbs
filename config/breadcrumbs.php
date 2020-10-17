@@ -67,7 +67,7 @@ return [
     */
 
     // Manager
-    'manager-class' => Diglactic\Breadcrumbs\Breadcrumbs::class,
+    'manager-class' => Diglactic\Breadcrumbs\Manager::class,
 
     // Generator
     'generator-class' => Diglactic\Breadcrumbs\Generator::class,

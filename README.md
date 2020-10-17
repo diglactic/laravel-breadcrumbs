@@ -817,14 +817,14 @@ You can use [dependency injection](https://laravel.com/docs/8.x/providers#the-bo
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
 
 ```php
-use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Manager;
 use Illuminate\Support\ServiceProvider;
 
 class MyServiceProvider extends ServiceProvider
 {
     public function register() {}
 
-    public function boot(Breadcrumbs $breadcrumbs)
+    public function boot(Manager $breadcrumbs)
     {
         $breadcrumbs->register(...);
     }
@@ -861,7 +861,7 @@ file with the new class name:
 
 ```php
     // Manager
-    'manager-class' => Diglactic\Breadcrumbs\Breadcrumbs::class,
+    'manager-class' => Diglactic\Breadcrumbs\Manager::class,
 
     // Generator
     'generator-class' => Diglactic\Breadcrumbs\Generator::class,
@@ -897,7 +897,7 @@ API Reference
 | `Breadcrumbs::setCurrentRoute(string $name, mixed $param1, ...)`    | void       | 2.2.0    |
 | `Breadcrumbs::clearCurrentRoute()`                                  | void       | 2.2.0    |
 
-[Source](src/Breadcrumbs.php)
+[Source](src/Manager.php)
 
 
 ### Defining breadcrumbs

@@ -2,10 +2,10 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Route;
 use LogicException;
-use Route;
 
 class BasicFunctionalityTest extends TestCase
 {
@@ -13,7 +13,9 @@ class BasicFunctionalityTest extends TestCase
     {
         parent::setUp();
 
-        $closure = function () { throw new LogicException; };
+        $closure = function () {
+            throw new LogicException;
+        };
 
         // Home
         Route::name('home')->get('/', $closure);
@@ -54,14 +56,14 @@ class BasicFunctionalityTest extends TestCase
             $trail->push($post->title, route('post', $post->id));
         });
 
-        $this->category = (object) [
-            'id'    => 456,
+        $this->category = (object)[
+            'id' => 456,
             'title' => 'Sample Category',
         ];
 
-        $this->post = (object) [
-            'id'       => 123,
-            'title'    => 'Sample Post',
+        $this->post = (object)[
+            'id' => 123,
+            'title' => 'Sample Post',
             'category' => $this->category,
         ];
     }
@@ -88,7 +90,7 @@ class BasicFunctionalityTest extends TestCase
     public function testRenderHome()
     {
         $rendered = Breadcrumbs::render('home');
-        $html     = $rendered->toHtml();
+        $html = $rendered->toHtml();
 
         $this->assertInstanceOf(Htmlable::class, $rendered);
 

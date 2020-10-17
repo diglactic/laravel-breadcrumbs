@@ -2,7 +2,6 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
@@ -15,7 +14,7 @@ class FacadePhpDocTest extends TestCase
 {
     public function tags()
     {
-        $code = file_get_contents(__DIR__ . '/../src/Breadcrumbs.php');
+        $code = file_get_contents(__DIR__ . '/../src/Manager.php');
 
         $pattern = '/
             \*

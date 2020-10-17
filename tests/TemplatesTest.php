@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Generator;
 
 class TemplatesTest extends TestCase

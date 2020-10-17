@@ -2,15 +2,15 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Config;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException;
 use Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
 use Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException;
 use Diglactic\Breadcrumbs\Exceptions\ViewNotSetException;
 use ErrorException;
 use Facade\IgnitionContracts\ProvidesSolution;
-use Route;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Route;
 
 class IgnitionTest extends TestCase
 {

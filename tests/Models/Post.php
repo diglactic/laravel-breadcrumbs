@@ -8,7 +8,7 @@ class Post extends Model
 {
     public function __construct($id = null)
     {
-        $this->id    = $id;
+        $this->id = $id;
         $this->title = "Post $id";
     }
 
@@ -21,15 +21,23 @@ class Post extends Model
     // Route model binding
     public function where($column, $value)
     {
-        return new class($value)
-        {
-            public function __construct($id) { $this->id = $id; }
+        return new class($value) {
+            public function __construct($id)
+            {
+                $this->id = $id;
+            }
 
             // Explicit route model binding
-            public function first() { return new Post($this->id); }
+            public function first()
+            {
+                return new Post($this->id);
+            }
 
             // Implicit route model binding
-            public function firstOrFail() { return new Post($this->id); }
+            public function firstOrFail()
+            {
+                return new Post($this->id);
+            }
         };
     }
 }

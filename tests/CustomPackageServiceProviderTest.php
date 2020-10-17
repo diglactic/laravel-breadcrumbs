@@ -2,11 +2,9 @@
 
 namespace Diglactic\Breadcrumbs\Tests;
 
-use Breadcrumbs;
-use Diglactic\Breadcrumbs\Generator;
 use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator;
 use Diglactic\Breadcrumbs\ServiceProvider;
-use Illuminate\Support\ServiceProvider;
 
 class CustomPackageServiceProviderTest extends TestCase
 {
@@ -32,7 +30,9 @@ class CustomPackageServiceProviderTest extends TestCase
 
 class CustomPackageServiceProvider extends ServiceProvider
 {
-    public function register() { }
+    public function register()
+    {
+    }
 
     public function boot(Breadcrumbs $breadcrumbs)
     {
