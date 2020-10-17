@@ -16,7 +16,7 @@ env:
     - Laravel=8.x
     - Laravel=7.x
     - Laravel=6.x
-    -
+
 matrix:
   exclude:
     # Unsupported combinations
