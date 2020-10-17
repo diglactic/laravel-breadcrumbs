@@ -332,8 +332,8 @@ Alternatively you can skip the custom view and call `Breadcrumbs::generate()` to
 ```
 
 
- Outputting Breadcrumbs
---------------------------------------------------------------------------------
+Outputting Breadcrumbs
+----------------------
 
 Call `Breadcrumbs::render()` in the view for each page, passing it the name of the breadcrumb to use and any additional parameters.
 
@@ -805,7 +805,7 @@ class MyServiceProvider extends ServiceProvider
 ```
 
 
-### Dependency Injection
+### Dependency injection
 
 You can use [dependency injection](https://laravel.com/docs/8.x/providers#the-boot-method) to access the `BreadcrumbsManager`
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
@@ -848,7 +848,7 @@ Breadcrumbs::macro('pageTitle', function () {
 ```
 
 
-### Advanced Customizations
+### Advanced customizations
 
 For more advanced customisations you can subclass BreadcrumbsManager and/or BreadcrumbsGenerator, then update the config
 file with the new class name:
@@ -865,8 +865,8 @@ file with the new class name:
 unit tests to ensure it doesn't break when upgrading.)
 
 
- API Reference
---------------------------------------------------------------------------------
+API Reference
+-------------
 
 ### `Breadcrumbs` Facade
 
