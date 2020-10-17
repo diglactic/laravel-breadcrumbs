@@ -2,7 +2,7 @@
 
 namespace BreadcrumbsTests;
 
-use Diglactic\Breadcrumbs\BreadcrumbsServiceProvider;
+use Diglactic\Breadcrumbs\ServiceProvider;
 use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 use Spatie\Snapshots\MatchesSnapshots;
@@ -14,7 +14,7 @@ abstract class TestCase extends TestbenchTestCase
     protected function getPackageProviders($app)
     {
         return [
-            BreadcrumbsServiceProvider::class,
+            ServiceProvider::class,
         ];
     }
 

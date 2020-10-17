@@ -4,7 +4,7 @@ namespace BreadcrumbsTests;
 
 use Breadcrumbs;
 use Config;
-use Diglactic\Breadcrumbs\BreadcrumbsGenerator;
+use Diglactic\Breadcrumbs\Generator;
 use Illuminate\Support\Collection;
 use Route;
 use URL;
@@ -27,7 +27,7 @@ class CustomGeneratorTest extends TestCase
     }
 }
 
-class CustomGenerator extends BreadcrumbsGenerator
+class CustomGenerator extends Generator
 {
     public function generate(array $callbacks, array $before, array $after, string $name, array $params): Collection
     {

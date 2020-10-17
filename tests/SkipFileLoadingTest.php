@@ -11,7 +11,7 @@ class SkipFileLoadingTest extends TestCase
         $app->config->set('breadcrumbs.files', []);
     }
 
-    /** @covers \Diglactic\Breadcrumbs\BreadcrumbsServiceProvider::registerBreadcrumbs */
+    /** @covers \Diglactic\Breadcrumbs\ServiceProvider::registerBreadcrumbs */
     public function testLoading()
     {
         // I can't think of a way to actually test this since nothing is loaded -

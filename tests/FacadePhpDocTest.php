@@ -2,7 +2,7 @@
 
 namespace BreadcrumbsTests;
 
-use Diglactic\Breadcrumbs\BreadcrumbsManager;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
@@ -15,7 +15,7 @@ class FacadePhpDocTest extends TestCase
 {
     public function tags()
     {
-        $code = file_get_contents(__DIR__ . '/../src/BreadcrumbsManager.php');
+        $code = file_get_contents(__DIR__ . '/../src/Breadcrumbs.php');
 
         $pattern = '/
             \*
@@ -52,7 +52,7 @@ class FacadePhpDocTest extends TestCase
 
     public function testBreadcrumbsFacade()
     {
-        $class = new ReflectionClass(BreadcrumbsManager::class);
+        $class = new ReflectionClass(Breadcrumbs::class);
         $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
 
         $macroableTrait = new ReflectionClass(Macroable::class);

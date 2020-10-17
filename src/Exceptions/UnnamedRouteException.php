@@ -1,8 +1,7 @@
 <?php
 
-namespace Diglactic\BreadcrumbsExceptions;
+namespace Diglactic\Breadcrumbs\Exceptions;
 
-use Diglactic\BreadcrumbsBreadcrumbsException;
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
@@ -15,7 +14,7 @@ use Illuminate\Support\Str;
  * Exception that is thrown if the user attempt to render breadcrumbs for the current route but the current route
  * doesn't have a name.
  */
-class UnnamedRouteException extends BreadcrumbsException implements ProvidesSolution
+class UnnamedRouteException extends BaseException implements ProvidesSolution
 {
     /**
      * @var Route

@@ -1,16 +1,15 @@
 <?php
 
-namespace Diglactic\BreadcrumbsExceptions;
+namespace Diglactic\Breadcrumbs\Exceptions;
 
-use Diglactic\BreadcrumbsBreadcrumbsException;
-use Facade\IgnitionContracts\Solution;
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
+use Facade\IgnitionContracts\Solution;
 
 /**
  * Exception that is thrown if the user attempts to render breadcrumbs without setting a view.
  */
-class ViewNotSetException extends BreadcrumbsException implements ProvidesSolution
+class ViewNotSetException extends BaseException implements ProvidesSolution
 {
     public function getSolution(): Solution
     {

@@ -2,7 +2,7 @@
 
 namespace Diglactic\Breadcrumbs;
 
-use Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException;
+use Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
 use Illuminate\Support\Collection;
 
 /**
@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
  * This is passed as the first parameter to all breadcrumb-generating closures. In the documentation it is named
  * `$breadcrumbs`.
  */
-class BreadcrumbsGenerator
+class Generator
 {
     /**
      * @var Collection Breadcrumbs currently being generated.

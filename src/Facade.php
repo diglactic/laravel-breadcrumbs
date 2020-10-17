@@ -1,14 +1,13 @@
 <?php
 
-namespace Diglactic\BreadcrumbsFacades;
+namespace Diglactic\Breadcrumbs;
 
-use Diglactic\BreadcrumbsBreadcrumbsManager;
-use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Facade as BaseFacade;
 
 /**
  * Breadcrumbs facade - allows easy access to the Manager instance.
  *
- * @method static void for(string $name, callable $callback)
+ * @method static void for (string $name, callable $callback)
  * @method static void register(string $name, callable $callback)
  * @method static void before(callable $callback)
  * @method static void after(callable $callback)
@@ -21,9 +20,9 @@ use Illuminate\Support\Facades\Facade;
  * @method static void setCurrentRoute(string $name, ...$params)
  * @method static void clearCurrentRoute()
  * @mixin \Illuminate\Support\Traits\Macroable
- * @see BreadcrumbsManager
+ * @see Breadcrumbs
  */
-class Breadcrumbs extends Facade
+class Facade extends BaseFacade
 {
     /**
      * Get the name of the class registered in the Application container.
@@ -32,6 +31,6 @@ class Breadcrumbs extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return BreadcrumbsManager::class;
+        return Breadcrumbs::class;
     }
 }

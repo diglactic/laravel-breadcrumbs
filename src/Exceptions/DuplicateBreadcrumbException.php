@@ -1,11 +1,10 @@
 <?php
 
-namespace Diglactic\BreadcrumbsExceptions;
+namespace Diglactic\Breadcrumbs\Exceptions;
 
-use Diglactic\BreadcrumbsBreadcrumbsException;
-use Facade\IgnitionContracts\Solution;
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
+use Facade\IgnitionContracts\Solution;
 use Illuminate\Support\Str;
 
 /**
@@ -13,7 +12,7 @@ use Illuminate\Support\Str;
  *
  * @see \Diglactic\BreadcrumbsBreadcrumbsManager::register()
  */
-class DuplicateBreadcrumbException extends BreadcrumbsException implements ProvidesSolution
+class DuplicateBreadcrumbException extends BaseException implements ProvidesSolution
 {
     private $name;
 

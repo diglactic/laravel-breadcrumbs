@@ -2,22 +2,14 @@
 
 namespace Diglactic\Breadcrumbs;
 
-// Not available until Laravel 5.8
-//use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
  * The Laravel service provider, which registers, configures and bootstraps the package.
  */
-class BreadcrumbsServiceProvider extends ServiceProvider //implements DeferrableProvider
+class ServiceProvider extends BaseServiceProvider implements DeferrableProvider
 {
-    public function isDeferred()
-    {
-        // Remove this and uncomment DeferrableProvider after dropping support
-        // for Laravel 5.7 and below
-        return true;
-    }
-
     /**
      * Get the services provided for deferred loading.
      *
@@ -25,7 +17,7 @@ class BreadcrumbsServiceProvider extends ServiceProvider //implements Deferrable
      */
     public function provides(): array
     {
-        return [BreadcrumbsManager::class];
+        return [Breadcrumbs::class];
     }
 
     /**
@@ -39,16 +31,17 @@ class BreadcrumbsServiceProvider extends ServiceProvider //implements Deferrable
         $this->mergeConfigFrom(__DIR__ . '/../config/breadcrumbs.php', 'breadcrumbs');
 
         // Register Manager class singleton with the app container
-        $this->app->singleton(BreadcrumbsManager::class, config('breadcrumbs.manager-class'));
+        $this->app->singleton(Breadcrumbs::class, config('breadcrumbs.manager-class'));
 
         // Register Generator class so it can be overridden
-        $this->app->bind(BreadcrumbsGenerator::class, config('breadcrumbs.generator-class'));
+        $this->app->bind(Generator::class, config('breadcrumbs.generator-class'));
     }
 
     /**
      * Bootstrap the application events.
      *
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function boot(): void
     {
@@ -71,27 +64,28 @@ class BreadcrumbsServiceProvider extends ServiceProvider //implements Deferrable
      * automatically when bootstrapping the application.
      *
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function registerBreadcrumbs(): void
     {
         // Load the routes/breadcrumbs.php file, or other configured file(s)
         $files = config('breadcrumbs.files');
 
-        if (! $files) {
+        if (!$files) {
             return;
         }
 
         // If it is set to the default value and that file doesn't exist, skip loading it rather than causing an error
-        if ($files === base_path('routes/breadcrumbs.php') && ! is_file($files)) {
+        if ($files === base_path('routes/breadcrumbs.php') && !is_file($files)) {
             return;
         }
 
         // Support both Breadcrumbs:: and $breadcrumbs-> syntax by making $breadcrumbs variable available
         /** @noinspection PhpUnusedLocalVariableInspection */
-        $breadcrumbs = $this->app->make(BreadcrumbsManager::class);
+        $breadcrumbs = $this->app->make(Breadcrumbs::class);
 
         // Support both a single string filename and an array of filenames (e.g. returned by glob())
-        foreach ((array) $files as $file) {
+        foreach ((array)$files as $file) {
             require $file;
         }
     }

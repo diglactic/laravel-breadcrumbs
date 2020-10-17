@@ -4,7 +4,7 @@ namespace BreadcrumbsTests;
 
 use Breadcrumbs;
 use Config;
-use Diglactic\Breadcrumbs\BreadcrumbsManager;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Support\Collection;
 use Route;
 use URL;
@@ -16,7 +16,7 @@ class CustomManagerTest extends TestCase
         parent::resolveApplicationConfiguration($app);
 
         // Need to inject this early, before the package is loaded, to simulate it being set in the config file
-        $app['config']['breadcrumbs.manager-class'] = CustomManager::class;
+        $app['config']['breadcrumbs.manager-class'] = CustomBreadcrumbs::class;
     }
 
     public function testCustomManager()
@@ -27,7 +27,7 @@ class CustomManagerTest extends TestCase
     }
 }
 
-class CustomManager extends BreadcrumbsManager
+class CustomBreadcrumbs extends Breadcrumbs
 {
     public function generate(string $name = null, ...$params): Collection
     {

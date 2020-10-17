@@ -1,8 +1,7 @@
 <?php
 
-namespace Diglactic\BreadcrumbsExceptions;
+namespace Diglactic\Breadcrumbs\Exceptions;
 
-use Diglactic\BreadcrumbsBreadcrumbsException;
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
@@ -13,7 +12,7 @@ use Illuminate\Support\Str;
 /**
  * Exception that is thrown if the user attempts to generate breadcrumbs for a page that is not registered.
  */
-class InvalidBreadcrumbException extends BreadcrumbsException implements ProvidesSolution
+class InvalidBreadcrumbException extends BaseException implements ProvidesSolution
 {
     private $name;
     private $isRouteBound = false;

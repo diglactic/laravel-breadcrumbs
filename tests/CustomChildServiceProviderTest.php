@@ -3,14 +3,14 @@
 namespace BreadcrumbsTests;
 
 use Breadcrumbs;
-use Diglactic\Breadcrumbs\BreadcrumbsServiceProvider as BreadcrumbsServiceProvider;
+use Diglactic\Breadcrumbs\ServiceProvider as BreadcrumbsServiceProvider;
 
 class CustomChildServiceProviderTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
         return [
-            CustomChildBreadcrumbsServiceProvider::class,
+            CustomChildServiceProvider::class,
         ];
     }
 
@@ -26,7 +26,7 @@ class CustomChildServiceProviderTest extends TestCase
     }
 }
 
-class CustomChildBreadcrumbsServiceProvider extends BreadcrumbsServiceProvider
+class CustomChildServiceProvider extends ServiceProvider
 {
     public function registerBreadcrumbs(): void
     {

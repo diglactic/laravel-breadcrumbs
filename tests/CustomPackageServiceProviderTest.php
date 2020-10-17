@@ -3,9 +3,9 @@
 namespace BreadcrumbsTests;
 
 use Breadcrumbs;
-use Diglactic\Breadcrumbs\BreadcrumbsGenerator;
-use Diglactic\Breadcrumbs\BreadcrumbsManager;
-use Diglactic\Breadcrumbs\BreadcrumbsServiceProvider;
+use Diglactic\Breadcrumbs\Generator;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\ServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class CustomPackageServiceProviderTest extends TestCase
@@ -13,7 +13,7 @@ class CustomPackageServiceProviderTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            BreadcrumbsServiceProvider::class,
+            ServiceProvider::class,
             CustomPackageServiceProvider::class,
         ];
     }
@@ -34,9 +34,9 @@ class CustomPackageServiceProvider extends ServiceProvider
 {
     public function register() { }
 
-    public function boot(BreadcrumbsManager $breadcrumbs)
+    public function boot(Breadcrumbs $breadcrumbs)
     {
-        $breadcrumbs->for('home', function (BreadcrumbsGenerator $trail) {
+        $breadcrumbs->for('home', function (Generator $trail) {
             $trail->push('Home', '/');
         });
     }

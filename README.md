@@ -817,14 +817,14 @@ You can use [dependency injection](https://laravel.com/docs/8.x/providers#the-bo
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
 
 ```php
-use Diglactic\Breadcrumbs\BreadcrumbsManager;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Support\ServiceProvider;
 
 class MyServiceProvider extends ServiceProvider
 {
     public function register() {}
 
-    public function boot(BreadcrumbsManager $breadcrumbs)
+    public function boot(Breadcrumbs $breadcrumbs)
     {
         $breadcrumbs->register(...);
     }
@@ -861,10 +861,10 @@ file with the new class name:
 
 ```php
     // Manager
-    'manager-class' => Diglactic\Breadcrumbs\BreadcrumbsManager::class,
+    'manager-class' => Diglactic\Breadcrumbs\Breadcrumbs::class,
 
     // Generator
-    'generator-class' => Diglactic\Breadcrumbs\BreadcrumbsGenerator::class,
+    'generator-class' => Diglactic\Breadcrumbs\Generator::class,
 ```
 
 (**Note:** Anything that's not part of the public API (see below) may change between releases, so I suggest you write
@@ -897,24 +897,24 @@ API Reference
 | `Breadcrumbs::setCurrentRoute(string $name, mixed $param1, ...)`    | void       | 2.2.0    |
 | `Breadcrumbs::clearCurrentRoute()`                                  | void       | 2.2.0    |
 
-[Source](src/BreadcrumbsManager.php)
+[Source](src/Breadcrumbs.php)
 
 
 ### Defining breadcrumbs
 
 ```php
 use App\Models\Post;
-use Diglactic\Breadcrumbs\BreadcrumbsGenerator;
+use Diglactic\Breadcrumbs\Generator;
 
-Breadcrumbs::before(function (BreadcrumbsGenerator $trail) {
+Breadcrumbs::before(function (Generator $trail) {
     // ...
 });
 
-Breadcrumbs::for('name', function (BreadcrumbsGenerator $trail, Post $post) {
+Breadcrumbs::for('name', function (Generator $trail, Post $post) {
     // ...
 });
 
-Breadcrumbs::after(function (BreadcrumbsGenerator $trail) {
+Breadcrumbs::after(function (Generator $trail) {
     // ...
 });
 ```
@@ -928,7 +928,7 @@ Breadcrumbs::after(function (BreadcrumbsGenerator $trail) {
 | `$trail->parent(string $name)`                          | void    | 1.0.0    |
 | `$trail->parent(string $name, mixed $param1, ...)`      | void    | 1.0.0    |
 
-[Source](src/BreadcrumbsGenerator.php)
+[Source](src/Generator.php)
 
 
 ### In the view (template)
@@ -945,7 +945,7 @@ Breadcrumbs::after(function (BreadcrumbsGenerator $trail) {
 | `$breadcrumb->url`                   | string / null | 1.0.0    |
 | `$breadcrumb->custom_attribute_name` | mixed         | 2.3.0    |
 
-[Source](src/BreadcrumbsGenerator.php#L96)
+[Source](src/Generator.php#L96)
 
 
 ### Configuration file
