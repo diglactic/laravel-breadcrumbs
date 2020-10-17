@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 /**
  * Exception that is thrown if the user attempts to register two breadcrumbs with the same name.
  *
- * @see \Diglactic\BreadcrumbsBreadcrumbsManager::register()
+ * @see \Diglactic\Breadcrumbs\ServiceProvider::register()
  */
 class DuplicateBreadcrumbException extends BaseException implements ProvidesSolution
 {

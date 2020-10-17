@@ -46,10 +46,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ServiceProvider"
+                "Diglactic\\Breadcrumbs\\ServiceProvider"
             ],
             "aliases": {
-                "Breadcrumbs": "Diglactic\\Breadcrumbs\\Facades\\Breadcrumbs"
+                "Breadcrumbs": "Diglactic\\Breadcrumbs\\Facade"
             }
         }
     }
