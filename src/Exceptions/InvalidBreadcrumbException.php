@@ -1,8 +1,8 @@
 <?php
 
-namespace DaveJamesMiller\Breadcrumbs\Exceptions;
+namespace Diglactic\BreadcrumbsExceptions;
 
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsException;
+use Diglactic\BreadcrumbsBreadcrumbsException;
 use Facade\IgnitionContracts\BaseSolution;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Facade\IgnitionContracts\Solution;
@@ -51,14 +51,14 @@ class InvalidBreadcrumbException extends BreadcrumbsException implements Provide
         }
 
         $links = [];
-        $links['Defining breadcrumbs'] = 'https://github.com/davejamesmiller/laravel-breadcrumbs#defining-breadcrumbs';
+        $links['Defining breadcrumbs'] = 'https://github.com/diglactic/laravel-breadcrumbs#defining-breadcrumbs';
 
         if ($this->isRouteBound) {
-            $links['Route-bound breadcrumbs'] = 'https://github.com/davejamesmiller/laravel-breadcrumbs#route-bound-breadcrumbs';
+            $links['Route-bound breadcrumbs'] = 'https://github.com/diglactic/laravel-breadcrumbs#route-bound-breadcrumbs';
         }
 
-        $links['Silencing breadcrumb exceptions'] = 'https://github.com/davejamesmiller/laravel-breadcrumbs#configuration-file';
-        $links['Laravel Breadcrumbs documentation'] = 'https://github.com/davejamesmiller/laravel-breadcrumbs#laravel-breadcrumbs';
+        $links['Silencing breadcrumb exceptions'] = 'https://github.com/diglactic/laravel-breadcrumbs#configuration-file';
+        $links['Laravel Breadcrumbs documentation'] = 'https://github.com/diglactic/laravel-breadcrumbs#laravel-breadcrumbs';
 
         return BaseSolution::create("Add this to $file")
             ->setSolutionDescription("

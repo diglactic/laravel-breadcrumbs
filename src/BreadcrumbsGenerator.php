@@ -1,8 +1,8 @@
 <?php
 
-namespace DaveJamesMiller\Breadcrumbs;
+namespace Diglactic\Breadcrumbs;
 
-use DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
+use Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException;
 use Illuminate\Support\Collection;
 
 /**

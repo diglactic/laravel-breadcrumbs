@@ -817,7 +817,7 @@ You can use [dependency injection](https://laravel.com/docs/8.x/providers#the-bo
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
 
 ```php
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;
+use Diglactic\Breadcrumbs\BreadcrumbsManager;
 use Illuminate\Support\ServiceProvider;
 
 class MyServiceProvider extends ServiceProvider
@@ -861,10 +861,10 @@ file with the new class name:
 
 ```php
     // Manager
-    'manager-class' => DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
+    'manager-class' => Diglactic\Breadcrumbs\BreadcrumbsManager::class,
 
     // Generator
-    'generator-class' => DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+    'generator-class' => Diglactic\Breadcrumbs\BreadcrumbsGenerator::class,
 ```
 
 (**Note:** Anything that's not part of the public API (see below) may change between releases, so I suggest you write
@@ -904,7 +904,7 @@ API Reference
 
 ```php
 use App\Models\Post;
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
+use Diglactic\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::before(function (BreadcrumbsGenerator $trail) {
     // ...

@@ -2,8 +2,8 @@
 
 namespace BreadcrumbsTests;
 
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider;
-use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use Diglactic\Breadcrumbs\BreadcrumbsServiceProvider;
+use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 use Spatie\Snapshots\MatchesSnapshots;
 

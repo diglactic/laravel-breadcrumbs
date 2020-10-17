@@ -33,8 +33,9 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "DaveJamesMiller\\Breadcrumbs\\": "src/classes/"
-        }
+            "Diglactic\\Breadcrumbs\\": "src/"
+        },
+        "files": ["src/deprecated.php"]
     },
     "autoload-dev": {
         "psr-4": {
@@ -45,10 +46,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DaveJamesMiller\\Breadcrumbs\\BreadcrumbsServiceProvider"
+                "Diglactic\\Breadcrumbs\\BreadcrumbsServiceProvider"
             ],
             "aliases": {
-                "Breadcrumbs": "DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs"
+                "Breadcrumbs": "Diglactic\\Breadcrumbs\\Facades\\Breadcrumbs"
             }
         }
     }

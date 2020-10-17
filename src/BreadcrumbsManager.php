@@ -1,11 +1,11 @@
 <?php
 
-namespace DaveJamesMiller\Breadcrumbs;
+namespace Diglactic\Breadcrumbs;
 
-use DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException;
-use DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
-use DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException;
-use DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException;
+use Diglactic\BreadcrumbsExceptions\DuplicateBreadcrumbException;
+use Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException;
+use Diglactic\BreadcrumbsExceptions\UnnamedRouteException;
+use Diglactic\BreadcrumbsExceptions\ViewNotSetException;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
@@ -68,7 +68,7 @@ class BreadcrumbsManager
      * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
      *     accept additional parameters.
      * @return void
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+     * @throws \Diglactic\BreadcrumbsExceptions\DuplicateBreadcrumbException If the given name has already been
      *     used.
      */
     public function for(string $name, callable $callback): void
@@ -89,7 +89,7 @@ class BreadcrumbsManager
      * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
      *     accept additional parameters.
      * @return void
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+     * @throws \Diglactic\BreadcrumbsExceptions\DuplicateBreadcrumbException If the given name has already been
      *     used.
      * @see self::for()
      */
@@ -151,9 +151,9 @@ class BreadcrumbsManager
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
      * @return \Illuminate\Support\Collection The generated breadcrumbs.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
+     * @throws \Diglactic\BreadcrumbsExceptions\UnnamedRouteException if no name is given and the current route
      *     doesn't have an associated name.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
+     * @throws \Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException if the name is (or any ancestor names
      *     are) not registered.
      */
     public function generate(string $name = null, ...$params): Collection
@@ -197,9 +197,9 @@ class BreadcrumbsManager
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
      * @return \Illuminate\Support\HtmlString The generated HTML.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+     * @throws \Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+     * @throws \Diglactic\BreadcrumbsExceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+     * @throws \Diglactic\BreadcrumbsExceptions\ViewNotSetException if no view has been set.
      */
     public function view(string $view, string $name = null, ...$params): HtmlString
     {
@@ -218,9 +218,9 @@ class BreadcrumbsManager
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
      * @return \Illuminate\Support\HtmlString The generated HTML.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+     * @throws \Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+     * @throws \Diglactic\BreadcrumbsExceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+     * @throws \Diglactic\BreadcrumbsExceptions\ViewNotSetException if no view has been set.
      */
     public function render(string $name = null, ...$params): HtmlString
     {
@@ -239,8 +239,8 @@ class BreadcrumbsManager
      * Optionally pass a
      *
      * @return \stdClass|null The breadcrumb for the current page.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+     * @throws \Diglactic\BreadcrumbsExceptions\UnnamedRouteException if the current route doesn't have an associated name.
+     * @throws \Diglactic\BreadcrumbsExceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
      */
     public function current(): ?\stdClass
     {
@@ -259,7 +259,7 @@ class BreadcrumbsManager
      * ```
      *
      * @return array A two-element array consisting of the route name (string) and any parameters (array).
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
+     * @throws \Diglactic\BreadcrumbsExceptions\UnnamedRouteException if the current route doesn't have an associated name.
      */
     protected function getCurrentRoute()
     {

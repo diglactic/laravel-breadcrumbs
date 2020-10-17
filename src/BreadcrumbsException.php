@@ -1,6 +1,6 @@
 <?php
 
-namespace DaveJamesMiller\Breadcrumbs;
+namespace Diglactic\Breadcrumbs;
 
 use Exception;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace DaveJamesMiller\Breadcrumbs\Facades;
+namespace Diglactic\BreadcrumbsFacades;
 
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;
+use Diglactic\BreadcrumbsBreadcrumbsManager;
 use Illuminate\Support\Facades\Facade;
 
 /**

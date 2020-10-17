@@ -12,7 +12,7 @@ class ExceptionsTest extends TestCase
 
     public function testDuplicateBreadcrumbException()
     {
-        $this->expectException(\DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException::class);
+        $this->expectException(\Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException::class);
         $this->expectExceptionMessage('Breadcrumb name "duplicate" has already been registered');
 
         Breadcrumbs::for('duplicate', function () { });
@@ -21,7 +21,7 @@ class ExceptionsTest extends TestCase
 
     public function testInvalidBreadcrumbException()
     {
-        $this->expectException(\DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException::class);
+        $this->expectException(\Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException::class);
         $this->expectExceptionMessage('Breadcrumb not found with name "invalid"');
 
         Breadcrumbs::render('invalid');
@@ -40,7 +40,7 @@ class ExceptionsTest extends TestCase
 
     public function testViewNotSetException()
     {
-        $this->expectException(\DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException::class);
+        $this->expectException(\Diglactic\Breadcrumbs\Exceptions\ViewNotSetException::class);
         $this->expectExceptionMessage('Breadcrumbs view not specified (check config/breadcrumbs.php)');
 
         Config::set('breadcrumbs.view', '');

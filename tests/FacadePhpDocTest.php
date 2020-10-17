@@ -2,8 +2,8 @@
 
 namespace BreadcrumbsTests;
 
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager;
-use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use Diglactic\Breadcrumbs\BreadcrumbsManager;
+use Diglactic\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use ReflectionClass;
@@ -15,7 +15,7 @@ class FacadePhpDocTest extends TestCase
 {
     public function tags()
     {
-        $code = file_get_contents(__DIR__ . '/../classes/BreadcrumbsManager.php');
+        $code = file_get_contents(__DIR__ . '/../src/BreadcrumbsManager.php');
 
         $pattern = '/
             \*
