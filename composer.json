@@ -7,19 +7,21 @@
     "homepage": "https://github.com/diglactic/laravel-breadcrumbs",
     "authors": [
         {
-            "name": "Dave James Miller",
-            "email": "dave@davejamesmiller.com"
+            "name": "Sheng Slogar",
+            "email": "sheng@diglactic.com",
+            "role": "Maintainer"
         },
         {
-            "name": "Sheng Slogar",
-            "email": "sheng@diglactic.com"
+            "name": "Dave James Miller",
+            "email": "dave@davejamesmiller.com",
+            "role": "Original Creator"
         }
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "facade/ignition-contracts": "^1.0",
-        "laravel/framework": "^8.0"
+        "laravel/framework": "^6.0"
     },
     "require-dev": {
         "orchestra/testbench": ">=3.6",

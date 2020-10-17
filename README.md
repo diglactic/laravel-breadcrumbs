@@ -39,11 +39,13 @@ Table of Contents
 Compatibility Chart
 -------------------
 
-| Laravel Breadcrumbs                                                    | Laravel      | PHP  |
-|------------------------------------------------------------------------|--------------|------|
-| **6.x**                                                                | 6.x          | 7.2+ |
-| **7.x**                                                                | 7.x          | 7.2+ |
-| **8.x**                                                                | 8.x          | 7.3+ |
+| Laravel | Laravel Breadcrumbs |
+|---------|---------------------|
+| **8.x** | 6.x                 |
+| **7.x** | 6.x                 |
+| **6.x** | 6.x                 |
+
+For older Laravel versions, refer to the [original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs).
 
 
 Getting Started
