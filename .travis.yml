@@ -17,6 +17,9 @@ env:
     - Laravel=7.x
     - Laravel=6.x
 
+before_install:
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
 install:
   - travis_retry composer require --dev "laravel/framework:${Laravel}" --no-interaction
 
