@@ -9,7 +9,11 @@
 
 ## Introduction
 
-A simple [Laravel](https://laravel.com/)-style way to create breadcrumbs.
+A simple Laravel-style way to create breadcrumbs.
+
+This project is the official fork of the popular [Laravel Breadcrumbs library by Dave James Miller](https://github.com/davejamesmiller/laravel-breadcrumbs)
+and wouldn't have been possible without [a bunch of awesome day-one contributors](https://github.com/davejamesmiller/laravel-breadcrumbs/graphs/contributors).
+Thanks, all! 
 
 
 Table of Contents
