@@ -1,6 +1,6 @@
 <?php
 
-namespace BreadcrumbsTests;
+namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\Breadcrumbs\ServiceProvider;
 use Diglactic\Breadcrumbs\Facades\Breadcrumbs;

@@ -1,6 +1,6 @@
 <?php
 
-namespace BreadcrumbsTests;
+namespace Diglactic\Breadcrumbs\Tests;
 
 use Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator;

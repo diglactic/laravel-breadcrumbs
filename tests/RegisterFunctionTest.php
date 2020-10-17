@@ -1,6 +1,6 @@
 <?php
 
-namespace BreadcrumbsTests;
+namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\BreadcrumbsFacades\Facade;
 use Illuminate\Contracts\Support\Htmlable;

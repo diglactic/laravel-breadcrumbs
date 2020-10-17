@@ -1,10 +1,10 @@
 <?php
 
-namespace BreadcrumbsTests;
+namespace Diglactic\Breadcrumbs\Tests;
 
 use Breadcrumbs;
-use BreadcrumbsTests\Models\Post;
 use Config;
+use Diglactic\Breadcrumbs\Tests\Models\Post;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Route;
 
