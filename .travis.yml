@@ -16,6 +16,11 @@ env:
     - Laravel=8.x
     - Laravel=7.x
     - Laravel=6.x
+    -
+matrix:
+  exclude:
+    # Unsupported combinations
+    - { env: Laravel=8.x, php: 7.2 }
 
 before_install:
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
