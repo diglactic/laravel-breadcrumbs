@@ -36,7 +36,7 @@ class TemplatesTest extends TestCase
 
     public function viewProvider(): Generator
     {
-        foreach (glob(__DIR__ . '/../views/*.blade.php') as $filename) {
+        foreach (glob(__DIR__ . '/../resources/views/*.blade.php') as $filename) {
             $name = basename($filename, '.blade.php');
             yield $name => [$name];
         }
