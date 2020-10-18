@@ -23,6 +23,7 @@ should work right away, it's a good idea to update these sooner than later as th
 | DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs           | Diglactic\Breadcrumbs\Breadcrumbs     |
 
 Once you're done, double-check your work by searching for `DaveJamesMiller\Breadcrumbs` within your application and
-making any necessary replacements. If you've never gone off script, you should be all set.
+making any necessary replacements. Note class name changes, like `BreadcrumbsManager` to `Manager`. If you've never
+gone off script, you should be all set.
 
 If you ran into trouble following this upgrade guide, please file an issue. Happy coding!
