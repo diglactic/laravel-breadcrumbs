@@ -11,8 +11,10 @@
 
 A simple Laravel-style way to create breadcrumbs.
 
-This project is the official fork of the original [Laravel Breadcrumbs by Dave James Miller](https://github.com/davejamesmiller/laravel-breadcrumbs)
-and wouldn't have been possible without [a bunch of awesome day-one contributors](https://github.com/davejamesmiller/laravel-breadcrumbs/graphs/contributors).
+This project is the [official fork](https://newsroom.diglactic.com/laravel-breadcrumbs/) of the fantastically original
+[Laravel Breadcrumbs by Dave James Miller](https://github.com/davejamesmiller/laravel-breadcrumbs) and wouldn't have
+been possible without
+[a bunch of awesome day-one contributors](https://github.com/davejamesmiller/laravel-breadcrumbs/graphs/contributors).
 Thanks, all!
 
 
