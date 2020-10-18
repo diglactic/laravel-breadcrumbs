@@ -873,15 +873,15 @@ when upgrading.)
 FAQ
 ---
 
-### Why is there no Breadcrumbs::resource() method?
+### Why is there no `Breadcrumbs::resource()` method?
+
 
 A few people have suggested adding `Breadcrumbs::resource()` to match
-[`Route::resource()`](https://laravel.com/docs/8.x/controllers#resource-controllers), but no-one has come up with a
-good implementation that (a) is flexible enough to deal with translations, nested resources, etc., and (b) isn't overly
+[`Route::resource()`](https://laravel.com/docs/8.x/controllers#resource-controllers), but no one has come up with a
+good implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly
 complex as a result.
 
-Personally I don't think there is a good all-round solution, so instead I recommend adding your own using
-`Breadcrumbs::macro()`. Here's a starting point:
+You can always create your own using `Breadcrumbs::macro()`. Here's a good starting point:
 
 ```php
 Breadcrumbs::macro('resource', function ($name, $title) {
