@@ -27,12 +27,9 @@ Table of Contents
 - [Structured Data](#structured-data)
 - [Route-Bound Breadcrumbs](#route-bound-breadcrumbs)
 - [Advanced Usage](#advanced-usage)
-- [API Reference](#api-reference)
 - [FAQ](#faq)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
-- [No Technical Support](#no-technical-support)
-- [Changelog](#changelog)
 - [License](#license)
 
 
@@ -45,7 +42,8 @@ Compatibility Chart
 | 7.x     | 6.x                 |
 | 6.x     | 6.x                 |
 
-For older Laravel versions, refer to the [original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs).
+For older Laravel versions, you'll need to use the
+[original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs).
 
 
 Getting Started
@@ -291,7 +289,7 @@ To customize the HTML, create your own view file (e.g. `resources/views/partials
     <ol class="breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
 
-            @if ($breadcrumb->url && !$loop->last)
+            @if (!is_null($breadcrumb->url) && !$loop->last)
                 <li class="breadcrumb-item"><a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
             @else
                 <li class="breadcrumb-item active">{{ $breadcrumb->title }}</li>
@@ -303,7 +301,7 @@ To customize the HTML, create your own view file (e.g. `resources/views/partials
 @endunless
 ```
 
-(See the [views/ directory](https://github.com/diglactic/laravel-breadcrumbs/tree/master/views) for the built-in templates.)
+(See the [resources/views/ directory](https://github.com/diglactic/laravel-breadcrumbs/tree/master/resources/views) for the built-in templates.)
 
 
 #### View data
@@ -455,7 +453,7 @@ Route::name('home')->get('/', 'HomeController@index');
 Route::name('post')->get('/post/{id}', 'PostController@show');
 ```
 
-For more details see [Named Routes](https://laravel.com/docs/5.5/routing#named-routes) in the Laravel documentation.
+For more details see [Named Routes](https://laravel.com/docs/8.x/routing#named-routes) in the Laravel documentation.
 
 
 ### Name your breadcrumbs to match
@@ -476,7 +474,7 @@ Breadcrumbs::for('post', function ($trail, $id) {
 });
 ```
 
-To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/5.5/errors#custom-http-error-pages), use
+To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/8.x/errors#custom-http-error-pages), use
 the name `errors.404`:
 
 ```php
@@ -563,7 +561,8 @@ Breadcrumbs::for('post', function ($trail, $post) { // <-- The same Post model i
 
 This makes your code less verbose and more efficient by only loading the post from the database once.
 
-For more details see [Route Model Binding](https://laravel.com/docs/5.5/routing#route-model-binding) in the Laravel documentation.
+For more details see [Route Model Binding](https://laravel.com/docs/8.x/routing#route-model-binding) in the Laravel
+documentation.
 
 
 ### Resourceful controllers
@@ -813,7 +812,7 @@ class MyServiceProvider extends ServiceProvider
 
 ### Dependency injection
 
-You can use [dependency injection](https://laravel.com/docs/8.x/providers#the-boot-method) to access the `BreadcrumbsManager`
+You can use [dependency injection](https://laravel.com/docs/8.x/providers#the-boot-method) to access the `Manager`
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
 
 ```php
@@ -834,7 +833,7 @@ class MyServiceProvider extends ServiceProvider
 
 ### Macros
 
-The BreadcrumbsManager class is [macroable](https://unnikked.ga/understanding-the-laravel-macroable-trait-dab051f09172),
+The breadcrumbs `Manager` class is [macroable](https://unnikked.ga/understanding-the-laravel-macroable-trait-dab051f09172),
 so you can add your own methods. For example:
 
 ```php
@@ -856,8 +855,8 @@ Breadcrumbs::macro('pageTitle', function () {
 
 ### Advanced customizations
 
-For more advanced customisations you can subclass BreadcrumbsManager and/or BreadcrumbsGenerator, then update the config
-file with the new class name:
+For more advanced customizations you can subclass `Breadcrumbs\Manager` and/or `Breadcrumbs\Generator`, then update the
+config file with the new class name:
 
 ```php
     // Manager
@@ -867,106 +866,12 @@ file with the new class name:
     'generator-class' => Diglactic\Breadcrumbs\Generator::class,
 ```
 
-(**Note:** Anything that's not part of the public API (see below) may change between releases, so I suggest you write
-unit tests to ensure it doesn't break when upgrading.)
+(**Note:** Anything may change between releases. It's always a good idea to write unit tests to ensure nothing breaks
+when upgrading.)
 
 
-API Reference
--------------
-
-### `Breadcrumbs` Facade
-
-| Method                                                              | Returns    | Added in |
-|---------------------------------------------------------------------|------------|----------|
-| `Breadcrumbs::for(string $name, closure $callback)`                 | void       | 5.1.0    |
-| `Breadcrumbs::register(string $name, closure $callback)`            | void       | 1.0.0    |
-| `Breadcrumbs::before(closure $callback)`                            | void       | 4.0.0    |
-| `Breadcrumbs::after(closure $callback)`                             | void       | 4.0.0    |
-| `Breadcrumbs::exists()`                                             | boolean    | 2.2.0    |
-| `Breadcrumbs::exists(string $name)`                                 | boolean    | 2.2.0    |
-| `Breadcrumbs::generate()`                                           | Collection | 2.2.3    |
-| `Breadcrumbs::generate(string $name)`                               | Collection | 1.0.0    |
-| `Breadcrumbs::generate(string $name, mixed $param1, ...)`           | Collection | 1.0.0    |
-| `Breadcrumbs::render()`                                             | string     | 2.2.0    |
-| `Breadcrumbs::render(string $name)`                                 | string     | 1.0.0    |
-| `Breadcrumbs::render(string $name, mixed $param1, ...)`             | string     | 1.0.0    |
-| `Breadcrumbs::view(string $view)`                                   | string     | 4.0.0    |
-| `Breadcrumbs::view(string $view, string $name)`                     | string     | 4.0.0    |
-| `Breadcrumbs::view(string $view, string $name, mixed $param1, ...)` | string     | 4.0.0    |
-| `Breadcrumbs::setCurrentRoute(string $name)`                        | void       | 2.2.0    |
-| `Breadcrumbs::setCurrentRoute(string $name, mixed $param1, ...)`    | void       | 2.2.0    |
-| `Breadcrumbs::clearCurrentRoute()`                                  | void       | 2.2.0    |
-
-[Source](src/Manager.php)
-
-
-### Defining breadcrumbs
-
-```php
-use App\Models\Post;
-use Diglactic\Breadcrumbs\Generator;
-
-Breadcrumbs::before(function (Generator $trail) {
-    // ...
-});
-
-Breadcrumbs::for('name', function (Generator $trail, Post $post) {
-    // ...
-});
-
-Breadcrumbs::after(function (Generator $trail) {
-    // ...
-});
-```
-
-
-| Method                                                  | Returns | Added in |
-|---------------------------------------------------------|---------|----------|
-| `$trail->push(string $title)`                           | void    | 1.0.0    |
-| `$trail->push(string $title, string $url)`              | void    | 1.0.0    |
-| `$trail->push(string $title, string $url, array $data)` | void    | 2.3.0    |
-| `$trail->parent(string $name)`                          | void    | 1.0.0    |
-| `$trail->parent(string $name, mixed $param1, ...)`      | void    | 1.0.0    |
-
-[Source](src/Generator.php)
-
-
-### In the view (template)
-
-```blade
-@foreach ($breadcrumbs as $breadcrumb)
-    {{-- ... --}}
-@endforeach
-```
-
-| Variable                             | Type          | Added in |
-|--------------------------------------|---------------|----------|
-| `$breadcrumb->title`                 | string        | 1.0.0    |
-| `$breadcrumb->url`                   | string / null | 1.0.0    |
-| `$breadcrumb->custom_attribute_name` | mixed         | 2.3.0    |
-
-[Source](src/Generator.php#L96)
-
-
-### Configuration file
-
-`config/breadcrumbs.php`
-
-| Setting                                    | Type           | Added in |
-|--------------------------------------------|----------------|----------|
-| `view`                                     | string         | 2.0.0    |
-| `files`                                    | string / array | 4.0.0    |
-| `unnamed-route-exception`                  | boolean        | 4.0.0    |
-| `missing-route-bound-breadcrumb-exception` | boolean        | 4.0.0    |
-| `invalid-named-breadcrumb-exception`       | boolean        | 4.0.0    |
-| `manager-class`                            | string         | 4.2.0    |
-| `generator-class`                          | string         | 4.2.0    |
-
-[Source](config/breadcrumbs.php)
-
-
- FAQ
---------------------------------------------------------------------------------
+FAQ
+---
 
 ### Why is there no Breadcrumbs::resource() method?
 
@@ -1013,6 +918,122 @@ Breadcrumbs::resource('users', 'Users');
 Note that this *doesn't* deal with translations or nested resources, and it assumes that all models have a `title`
 attribute (which users probably don't). Adapt it however you see fit.
 
+
+Troubleshooting
+---------------
+
+#### General
+
+- Re-read the instructions and make sure you did everything correctly.
+- Start with the simple options and only use the advanced options (e.g. Route-Bound Breadcrumbs) once you understand
+how it works.
+
+#### Class 'Breadcrumbs' not found
+
+- Try running `composer update diglactic/laravel-breadcrumbs` to upgrade.
+- Try running `php artisan package:discover` to ensure the service provider is detected by Laravel.
+
+#### Breadcrumb not found with name ...
+
+- Make sure you register the breadcrumbs in the right place (`routes/breadcrumbs.php` by default).
+    - Try putting `dd(__FILE__)` in the file to make sure it's loaded.
+    - Try putting `dd($files)` in `ServiceProvider::registerBreadcrumbs()` to check the path is correct.
+    - If not, try running `php artisan config:clear` (or manually delete `bootstrap/cache/config.php`) or update the
+    path in `config/breadcrumbs.php`.
+- Make sure the breadcrumb name is correct.
+    - If using Route-Bound Breadcrumbs, make sure it matches the route name exactly.
+- To suppress these errors when using Route-Bound Breadcrumbs (if you don't want breadcrumbs on some pages), either:
+    - Register them with an empty closure (no push/parent calls), or
+    - Set [`missing-route-bound-breadcrumb-exception` to `false`](#route-binding-exceptions) in the config file to
+    disable the check (but you won't be warned if you miss any pages).
+
+#### ServiceProvider::registerBreadcrumbs(): Failed opening required ...
+
+- Make sure the path is correct.
+- If so, check the file ownership & permissions are correct.
+- If not, try running `php artisan config:clear` (or manually delete `bootstrap/cache/config.php`) or update the path
+in `config/breadcrumbs.php`.
+
+#### Undefined variable: breadcrumbs
+
+- Make sure you use `{{ Breadcrumbs::render() }}` or `{{ Breadcrumbs::view() }}`, not `@include()`.
+
+Contributing
+------------
+
+**Documentation:** If you think the documentation can be improved in any way, please do
+[edit this file](https://github.com/diglactic/laravel-breadcrumbs/edit/master/README.md) and make a pull request.
+
+**Bug fixes:** Please fix it and open a [pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls).
+([See below](#creating-a-pull-request) for more detailed instructions.) Bonus points if you add a unit test to make
+sure it doesn't happen again!
+
+**New features:** Only features with a clear use case and well-considered API will be accepted. They must be documented
+and include unit tests. If in doubt, make a proof-of-concept (either code or documentation) and open a
+[pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls) to discuss the details. (Tip: If you want a feature
+that's too specific to be included by default, see [Macros](#macros) or [Advanced customizations](#advanced-customizations)
+for ways to add them.)
+
+
+### Creating a pull request
+
+The easiest way to work on Laravel Breadcrumbs is to tell Composer to install it from source (Git) using the
+`--prefer-source` flag:
+
+```bash
+rm -rf vendor/diglactic/laravel-breadcrumbs
+composer install --prefer-source
+```
+
+Then checkout the master branch and create your own local branch to work on:
+
+```bash
+cd vendor/diglactic/laravel-breadcrumbs
+git checkout -t origin/master
+git checkout -b YOUR_BRANCH
+```
+
+Now make your changes, including unit tests and documentation (if appropriate). Run the unit tests to make sure
+everything is still working:
+
+```bash
+scripts/test.sh
+```
+
+Then commit the changes. [Fork the repository on GitHub](https://github.com/diglactic/laravel-breadcrumbs/fork) if you
+haven't already, and push your changes to it:
+
+```bash
+git remote add YOUR_USERNAME git@github.com:YOUR_USERNAME/laravel-breadcrumbs.git
+git push -u YOUR_USERNAME YOUR_BRANCH
+```
+
+Finally, browse to the repository on GitHub and create a pull request.
+
+
+### Using your fork in a project
+
+To use your own fork in a project, update the `composer.json` in your main project as follows:
+
+```json5
+{
+    // ADD THIS:
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/YOUR_USERNAME/laravel-breadcrumbs.git"
+        }
+    ],
+    "require": {
+        // UPDATE THIS:
+        "diglactic/laravel-breadcrumbs": "dev-YOUR_BRANCH"
+    }
+}
+```
+
+Replace `YOUR_USERNAME` with your GitHub username and `YOUR_BRANCH` with the branch name (e.g. `develop`). This tells
+Composer to use your repository instead of the default one.
+
 ### Unit tests
 
 To run the unit tests:
@@ -1034,9 +1055,11 @@ PHPUnit that can make it not-quite-accurate.
 
 ### New version of Laravel
 
-There is no maximum version specified in [`composer.json`](composer.json), so there is no need for a new version of
-Laravel Breadcrumbs to be released every 6 months. However, this file will need to be updated to run tests against the
-new version:
+The following files will need to be updated to run tests against a new Laravel version:
+
+- [`composer.json`](composer.json)
+    - `laravel/framework` (Laravel versions)
+    - `php` (minimum PHP version)
 
 - [`.travis.yml`](.travis.yml)
     - `matrix` (Laravel versions)
@@ -1047,13 +1070,7 @@ If changes are required, also update:
 
 - [`README.md`](README.md)
     - [Compatibility Chart](README.md#compatibility-chart)
-    - [Changelog](README.md#changelog)
 
-If backwards-incompatible changes cause the **minimum** supported versions of Laravel or PHP to change, update:
-
-- [`composer.json`](composer.json)
-    - `php/*`
-    - `illuminate/*`
 
 License
 -------
