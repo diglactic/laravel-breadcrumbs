@@ -41,9 +41,9 @@ Compatibility Chart
 
 | Laravel | Laravel Breadcrumbs |
 |---------|---------------------|
-| **8.x** | 6.x                 |
-| **7.x** | 6.x                 |
-| **6.x** | 6.x                 |
+| 8.x     | 6.x                 |
+| 7.x     | 6.x                 |
+| 6.x     | 6.x                 |
 
 For older Laravel versions, refer to the [original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs).
 
