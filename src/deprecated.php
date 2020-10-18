@@ -11,7 +11,7 @@ use Diglactic\Breadcrumbs\Exceptions\ViewNotSetException;
 \class_alias(BaseException::class, \DaveJamesMiller\Breadcrumbs\BreadcrumbsException::class);
 \class_alias(Manager::class, \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class);
 \class_alias(Generator::class, \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class);
-\class_alias(Breadcrumbs::class, \DaveJamesMiller\Breeadcrumbs\Facades\Breadcrumbs::class);
+\class_alias(Breadcrumbs::class, \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs::class);
 \class_alias(DuplicateBreadcrumbException::class, \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException::class);
 \class_alias(InvalidBreadcrumbException::class, \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException::class);
 \class_alias(UnnamedRouteException::class, \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException::class);
