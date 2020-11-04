@@ -1,7 +1,7 @@
 <p align="center"><img src="logo.svg" alt="Laravel Breadcrumbs"></p>
 
 <p align="center">
-    <a href="https://travis-ci.org/diglactic/laravel-breadcrumbs"><img src="https://img.shields.io/travis/diglactic/laravel-breadcrumbs" alt="Build Status"></a>
+    <a href="https://github.com/diglactic/laravel-breadcrumbs/actions?query=workflow%3Atests"><img alt="Build Status" src="https://img.shields.io/github/workflow/status/diglactic/laravel-breadcrumbs/tests"></a>
     <a href="https://packagist.org/packages/diglactic/laravel-breadcrumbs"><img src="https://img.shields.io/packagist/dt/diglactic/laravel-breadcrumbs" alt="Total Downloads"></a>
     <a href="https://packagist.org/packages/diglactic/laravel-breadcrumbs"><img src="https://img.shields.io/packagist/v/diglactic/laravel-breadcrumbs" alt="Latest Stable Version"></a>
     <a href="https://packagist.org/packages/diglactic/laravel-breadcrumbs"><img src="https://img.shields.io/packagist/l/diglactic/laravel-breadcrumbs" alt="License"></a>
