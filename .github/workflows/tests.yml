@@ -40,11 +40,11 @@ jobs:
 
             - name: Install dependencies
               run: |
-                    # Run against latest deps
-                    composer update --no-interaction
-                    
                     # Install Laravel version per matrix
                     composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
+                    
+                    # Run against latest deps
+                    composer update --no-interaction
 
             - name: Execute PHPUnit tests
               # Update snapshots each time to deal with platform differences
