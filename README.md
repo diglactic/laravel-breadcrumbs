@@ -999,7 +999,7 @@ Now make your changes, including unit tests and documentation (if appropriate). 
 everything is still working:
 
 ```bash
-scripts/test.sh
+vendor/bin/phpunit -d --update-snapshots
 ```
 
 Then commit the changes. [Fork the repository on GitHub](https://github.com/diglactic/laravel-breadcrumbs/fork) if you
@@ -1041,13 +1041,13 @@ Composer to use your repository instead of the default one.
 To run the unit tests:
 
 ```bash
-scripts/test.sh
+vendor/bin/phpunit -d --update-snapshots
 ```
 
 To check code coverage:
 
 ```bash
-scripts/test-coverage.sh
+vendor/bin/phpunit --coverage-html test-coverage
 ```
 
 Then open `test-coverage/index.html` to view the results. Be aware of the
