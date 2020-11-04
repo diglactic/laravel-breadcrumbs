@@ -51,8 +51,7 @@ jobs:
               # @see https://github.com/spatie/phpunit-snapshot-assertions/issues/105
               run: vendor/bin/phpunit -d --update-snapshots --coverage-clover build/logs/clover.xml
               
-            - name: Report code coverage to Coveralls
-              uses: coverallsapp/github-action@master
+            - name: Report coverage to Codecov
+              uses: codecov/codecov-action@v1
               with:
-                github-token: ${{ secrets.GITHUB_TOKEN }}
-                path-to-lcov: $GITHUB_WORKSPACE/coverage/lcov.info
+                file: build/logs/clover.xml
