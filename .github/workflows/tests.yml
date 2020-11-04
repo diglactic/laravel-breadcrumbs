@@ -1,4 +1,4 @@
-name: Run Tests
+name: tests
 
 on:
   # Run action on every push
