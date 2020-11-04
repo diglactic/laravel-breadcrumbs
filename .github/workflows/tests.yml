@@ -16,9 +16,6 @@ jobs:
                 laravel: [8.*, 7.*, 6.*]
                 os: [ubuntu-latest, windows-latest]
                 
-                # Test against range of dependencies that match our requirements
-                dependency-version: [prefer-lowest, prefer-stable]
-                
                 # Unsupported combinations
                 exclude:
                 - laravel: 8.*
@@ -29,7 +26,7 @@ jobs:
 
         runs-on: ${{ matrix.os }}
         
-        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
         steps:
             - name: Checkout code
@@ -43,8 +40,13 @@ jobs:
 
             - name: Install dependencies
               run: |
-                   composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction
-                   composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+                    # Run against latest deps
+                    composer update --no-interaction
+                    
+                    # Install Laravel version per matrix
+                    composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
 
             - name: Execute tests
+              # Update snapshots each time to deal with platform differences
+              # @see https://github.com/spatie/phpunit-snapshot-assertions/issues/105
               run: vendor/bin/phpunit -d --update-snapshots
