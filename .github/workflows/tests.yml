@@ -42,9 +42,8 @@ jobs:
               run: |
                     # Install Laravel version per matrix
                     composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
-                    
-                    # Run against latest deps
-                    composer update --no-interaction
+                
+                    composer install --no-interaction
 
             - name: Execute PHPUnit tests
               # Update snapshots each time to deal with platform differences
