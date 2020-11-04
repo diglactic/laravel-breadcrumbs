@@ -1063,10 +1063,10 @@ The following files will need to be updated to run tests against a new Laravel v
     - `laravel/framework` (Laravel versions)
     - `php` (minimum PHP version)
 
-- [`.travis.yml`](.travis.yml)
-    - `matrix` (Laravel versions)
-    - `php` (PHP versions)
-    - `exclude` (Unsupported combinations)
+- [`tests.yml`](.github/workflows/tests.yml)
+    - `jobs.phpunit.strategy.matrix.laravel` (Laravel versions)
+    - `jobs.phpunit.strategy.matrix.php` (PHP versions)
+    - `jobs.phpunit.strategy.matrix.exclude` (Unsupported combinations)
 
 If changes are required, also update:
 
