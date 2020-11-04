@@ -17,6 +17,7 @@ return [
     | - 'breadcrumbs::foundation6' - Foundation 6
     | - 'breadcrumbs::materialize' - Materialize
     | - 'breadcrumbs::uikit'       - UIkit
+    | - 'breadcrumbs::tailwind'       - Tailwind CSS
     | - 'breadcrumbs::json-ld'     - JSON-LD Structured Data
     |
     | Or a custom view, e.g. '_partials/breadcrumbs'.
