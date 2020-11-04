@@ -1,4 +1,4 @@
-@if (count($breadcrumbs))
+@unless ($breadcrumbs->isEmpty())
 
     <ol class="breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
@@ -12,4 +12,4 @@
         @endforeach
     </ol>
 
-@endif
+@endunless

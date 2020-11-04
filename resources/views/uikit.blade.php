@@ -1,4 +1,5 @@
-@if (count($breadcrumbs))
+@unless ($breadcrumbs->isEmpty())
+
     <ul class="uk-breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
             @if ($loop->last)
@@ -10,4 +11,5 @@
             @endif
         @endforeach
     </ul>
-@endif
+
+@endunless

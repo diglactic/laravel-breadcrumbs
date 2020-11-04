@@ -1,4 +1,4 @@
-@if (count($breadcrumbs))
+@unless ($breadcrumbs->isEmpty())
 
     <ul class="breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
@@ -27,4 +27,4 @@
         @endforeach
     </ul>
 
-@endif
+@endunless

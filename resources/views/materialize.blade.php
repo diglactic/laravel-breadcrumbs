@@ -1,4 +1,4 @@
-@if (count($breadcrumbs))
+@unless ($breadcrumbs->isEmpty())
 
     <nav>
         <div class="nav-wrapper">
@@ -16,4 +16,4 @@
         </div>
     </nav>
 
-@endif
+@endunless

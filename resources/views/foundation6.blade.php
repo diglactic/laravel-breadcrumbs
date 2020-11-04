@@ -1,4 +1,4 @@
-@if (count($breadcrumbs))
+@unless ($breadcrumbs->isEmpty())
 
     <nav aria-label="You are here:" role="navigation">
         <ul class="breadcrumbs">
@@ -16,4 +16,4 @@
         </ul>
     </nav>
 
-@endif
+@endunless
