@@ -1,0 +1,50 @@
+name: Run Tests
+
+on:
+  # Run action on every push
+  push:
+    
+  # Run action at midnight to test against any updated dependencies
+  schedule:
+  - cron: '0 0 * * *'
+
+jobs:
+    phpunit:
+        strategy:
+            matrix:
+                php: [7.4, 7.3, 7.2]
+                laravel: [8.*, 7.*, 6.*]
+                os: [ubuntu-latest, windows-latest]
+                
+                # Test against range of dependencies that match our requirements
+                dependency-version: [prefer-lowest, prefer-stable]
+                
+                # Unsupported combinations
+                exclude:
+                - laravel: 8.*
+                  php: 7.2
+            
+            # Continue running through matrix even if one combination fails
+            fail-fast: false
+
+        runs-on: ${{ matrix.os }}
+        
+        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  coverage: none
+
+            - name: Install dependencies
+              run: |
+                   composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction
+                   composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+
+            - name: Execute tests
+              run: vendor/bin/phpunit
