@@ -123,6 +123,7 @@ The possible values are:
 - `breadcrumbs::foundation6` – [Foundation 6](https://get.foundation/sites/docs/breadcrumbs.html)
 - `breadcrumbs::materialize` – [Materialize](https://materializecss.com/breadcrumbs.html)
 - `breadcrumbs::uikit` – [UIkit](https://getuikit.com/docs/breadcrumb)
+- `breadcrumbs::tailwind` – [Tailwind CSS](https://tailwindcss.com/)
 - `breadcrumbs::json-ld` – [JSON-LD Structured Data](https://developers.google.com/search/docs/data-types/breadcrumbs)
 (&lt;script&gt; tag, no visible output)
 - The path to a custom view: e.g. `partials.breadcrumbs`
