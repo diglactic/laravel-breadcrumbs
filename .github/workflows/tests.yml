@@ -29,7 +29,7 @@ jobs:
         name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
         steps:
-            - name: Checkout code
+            - name: Check out code
               uses: actions/checkout@v2
 
             - name: Setup PHP
@@ -46,7 +46,12 @@ jobs:
                     # Install Laravel version per matrix
                     composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
 
-            - name: Execute tests
+            - name: Execute PHPUnit tests
               # Update snapshots each time to deal with platform differences
               # @see https://github.com/spatie/phpunit-snapshot-assertions/issues/105
-              run: vendor/bin/phpunit -d --update-snapshots
+              run: vendor/bin/phpunit -d --update-snapshots --coverage-clover build/logs/clover.xml
+              
+            - name: Report code coverage to Coveralls
+              uses: coverallsapp/github-action@master
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
