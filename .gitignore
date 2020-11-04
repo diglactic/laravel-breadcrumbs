@@ -11,3 +11,4 @@
 # Operating system files
 .DS_Store
 .idea/
+tests/__snapshots__/
