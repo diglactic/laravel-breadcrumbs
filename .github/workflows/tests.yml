@@ -43,8 +43,9 @@ jobs:
                   coverage: none
 
             - name: Install dependencies
-              run: composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction
-                   composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+              run: |
+                   composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction
+                   composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
             - name: Execute tests
               run: vendor/bin/phpunit
