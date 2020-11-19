@@ -1,8 +1,9 @@
 name: tests
 
 on:
-  # Run action on every push
+  # Run action on every push and PR
   push:
+  pull_request:
 
   # Run action at midnight to test against any updated dependencies
   schedule:
