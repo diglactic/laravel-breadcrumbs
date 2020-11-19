@@ -1000,7 +1000,7 @@ Now make your changes, including unit tests and documentation (if appropriate). 
 everything is still working:
 
 ```bash
-vendor/bin/phpunit -d --update-snapshots
+vendor/bin/phpunit
 ```
 
 Then commit the changes. [Fork the repository on GitHub](https://github.com/diglactic/laravel-breadcrumbs/fork) if you
@@ -1040,6 +1040,12 @@ Composer to use your repository instead of the default one.
 ### Unit tests
 
 To run the unit tests:
+
+```bash
+vendor/bin/phpunit
+```
+
+To run the unit tests and rebuild snapshots:
 
 ```bash
 vendor/bin/phpunit -d --update-snapshots
