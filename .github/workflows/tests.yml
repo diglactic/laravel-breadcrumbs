@@ -3,7 +3,7 @@ name: tests
 on:
   # Run action on every push
   push:
-    
+
   # Run action at midnight to test against any updated dependencies
   schedule:
   - cron: '0 0 * * *'
@@ -15,17 +15,17 @@ jobs:
                 php: [7.4, 7.3, 7.2]
                 laravel: [8.*, 7.*, 6.*]
                 os: [ubuntu-latest, windows-latest]
-                
+
                 # Unsupported combinations
                 exclude:
                 - laravel: 8.*
                   php: 7.2
-            
+
             # Continue running through matrix even if one combination fails
             fail-fast: false
 
         runs-on: ${{ matrix.os }}
-        
+
         name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
         steps:
@@ -42,14 +42,12 @@ jobs:
               run: |
                     # Install Laravel version per matrix
                     composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
-                
+
                     composer install --no-interaction
 
             - name: Execute PHPUnit tests
-              # Update snapshots each time to deal with platform differences
-              # @see https://github.com/spatie/phpunit-snapshot-assertions/issues/105
-              run: vendor/bin/phpunit -d --update-snapshots --coverage-clover build/logs/clover.xml
-              
+              run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
             - name: Report coverage to Codecov
               uses: codecov/codecov-action@v1
               with:

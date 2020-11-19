@@ -13,3 +13,6 @@
 
 /scripts/ export-ignore
 /tests/ export-ignore
+
+# Ensure the correct line endings are used in tests on Windows
+* text=auto eol=lf
