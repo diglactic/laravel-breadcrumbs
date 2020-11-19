@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<nav class="container mx-auto">
+  <ol class="p-4 rounded flex flex-wrap bg-gray-300 text-sm text-gray-800">
+    <li>
+      <a href="http://localhost" class="text-blue-600 hover:text-blue-900 hover:underline focus:text-blue-900 focus:underline">
+                            Home
+                        </a>
+    </li>
+    <li class="text-gray-500 px-2">
+                        /
+                    </li>
+    <li>
+                        Blog
+                    </li>
+    <li class="text-gray-500 px-2">
+                        /
+                    </li>
+    <li>
+                        Sample Category
+                    </li>
+  </ol>
+</nav>
