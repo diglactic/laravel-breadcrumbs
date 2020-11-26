@@ -24,7 +24,7 @@
         "laravel/framework": "^6.0 || ^7.0 || ^8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.9 || ^6.4",
+        "orchestra/testbench": "^4.10 || ^5.9 || ^6.4",
         "phpunit/phpunit": "^8.5 || ^9.3",
         "php-coveralls/php-coveralls": "^2.4",
         "spatie/phpunit-snapshot-assertions": "^2.2 || ^4.2"
