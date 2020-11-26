@@ -7,49 +7,50 @@ on:
 
   # Run action at midnight to test against any updated dependencies
   schedule:
-  - cron: '0 0 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
-    phpunit:
-        strategy:
-            matrix:
-                php: [8.0, 7.4, 7.3, 7.2]
-                laravel: [8.*, 7.*, 6.*]
-                os: [ubuntu-latest, windows-latest]
+  phpunit:
+    strategy:
+      matrix:
+        php: [ 8.0, 7.4, 7.3, 7.2 ]
+        laravel: [ 8.*, 7.*, 6.* ]
+        os: [ ubuntu-latest, windows-latest ]
 
-                # Unsupported combinations
-                exclude:
-                - laravel: 8.*
-                  php: 7.2
+        # Unsupported combinations
+        exclude:
+          - laravel: 8.*
+            php: 7.2
 
-            # Continue running through matrix even if one combination fails
-            fail-fast: false
+      # Continue running through matrix even if one combination fails
+      fail-fast: false
 
-        runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
 
-        name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
-        steps:
-            - name: Check out code
-              uses: actions/checkout@v2
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
 
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
-                  coverage: xdebug
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+          extensions: fileinfo
 
-            - name: Install dependencies
-              run: |
-                    # Install Laravel version per matrix
-                    composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
+      - name: Install dependencies
+        run: |
+          # Install Laravel version per matrix
+          composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
 
-                    composer install --no-interaction
+          composer install --no-interaction
 
-            - name: Execute PHPUnit tests
-              run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+      - name: Execute PHPUnit tests
+        run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
-            - name: Report coverage to Codecov
-              uses: codecov/codecov-action@v1
-              with:
-                file: build/logs/clover.xml
+      - name: Report coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: build/logs/clover.xml
