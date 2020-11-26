@@ -19,13 +19,13 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5|^8.0",
+        "php": "^7.2|^8.0",
         "facade/ignition-contracts": "^1.0",
         "laravel/framework": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
         "orchestra/testbench": ">=3.6",
-        "phpunit/phpunit": "^7.0|^8.0",
+        "phpunit/phpunit": "^8.5|^9.3",
         "php-coveralls/php-coveralls": "^2.0",
         "spatie/phpunit-snapshot-assertions": "^2.0"
     },
