@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
     backupGlobals="false"
     backupStaticAttributes="false"
     beStrictAboutChangesToGlobalState="true"
@@ -13,8 +15,7 @@
     convertWarningsToExceptions="true"
     processIsolation="false"
     stopOnFailure="false"
-    verbose="true"
->
+    verbose="true">
 
     <!-- List of files with tests inside -->
     <testsuites>
@@ -24,10 +25,10 @@
     </testsuites>
 
     <!-- List of source files for code coverage checker -->
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <coverage processUncoveredFiles="true">
+        <include>
             <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </coverage>
 
 </phpunit>
