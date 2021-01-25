@@ -19,7 +19,7 @@ return [
     | - 'breadcrumbs::materialize' - Materialize
     | - 'breadcrumbs::tailwind'    - Tailwind CSS
     | - 'breadcrumbs::uikit'       - UIkit
-	| - 'breadcrumbs::mdb5'        - MDB5
+    | - 'breadcrumbs::mdb5'        - MDB5
     |
     | Or a custom view, e.g. '_partials/breadcrumbs'.
     |
