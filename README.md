@@ -116,6 +116,7 @@ Then, open `config/breadcrumbs.php` and edit this line:
 
 The possible values are:
 
+- `breadcrumbs::bootstrap5` – [Bootstrap 5](https://getbootstrap.com/docs/5.0/components/breadcrumb/)
 - `breadcrumbs::bootstrap4` – [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/breadcrumb/)
 - `breadcrumbs::bootstrap3` – [Bootstrap 3](https://getbootstrap.com/docs/3.4/components/#breadcrumbs)
 - `breadcrumbs::bootstrap2` – [Bootstrap 2](http://getbootstrap.com/2.3.2/components.html#breadcrumbs)
@@ -125,7 +126,6 @@ The possible values are:
 - `breadcrumbs::materialize` – [Materialize](https://materializecss.com/breadcrumbs.html)
 - `breadcrumbs::tailwind` – [Tailwind CSS](https://tailwindcss.com/)
 - `breadcrumbs::uikit` – [UIkit](https://getuikit.com/docs/breadcrumb)
-- `breadcrumbs::mdb5` – [MDB5](https://mdbootstrap.com/docs/standard/navigation/breadcrumb/)
 (&lt;script&gt; tag, no visible output)
 - The path to a custom view: e.g. `partials.breadcrumbs`
 

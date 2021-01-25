@@ -10,6 +10,7 @@ return [
     | Choose a view to display when Breadcrumbs::render() is called.
     | Built in templates are:
     |
+    | - 'breadcrumbs::bootstrap5'  - Bootstrap 5
     | - 'breadcrumbs::bootstrap4'  - Bootstrap 4
     | - 'breadcrumbs::bootstrap3'  - Bootstrap 3
     | - 'breadcrumbs::bootstrap2'  - Bootstrap 2
@@ -19,7 +20,6 @@ return [
     | - 'breadcrumbs::materialize' - Materialize
     | - 'breadcrumbs::tailwind'    - Tailwind CSS
     | - 'breadcrumbs::uikit'       - UIkit
-    | - 'breadcrumbs::mdb5'        - MDB5
     |
     | Or a custom view, e.g. '_partials/breadcrumbs'.
     |
