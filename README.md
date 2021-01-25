@@ -116,6 +116,7 @@ Then, open `config/breadcrumbs.php` and edit this line:
 
 The possible values are:
 
+- `breadcrumbs::bootstrap5` – [Bootstrap 5](https://getbootstrap.com/docs/5.0/components/breadcrumb/)
 - `breadcrumbs::bootstrap4` – [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/breadcrumb/)
 - `breadcrumbs::bootstrap3` – [Bootstrap 3](https://getbootstrap.com/docs/3.4/components/#breadcrumbs)
 - `breadcrumbs::bootstrap2` – [Bootstrap 2](http://getbootstrap.com/2.3.2/components.html#breadcrumbs)
