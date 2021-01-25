@@ -125,6 +125,7 @@ The possible values are:
 - `breadcrumbs::materialize` – [Materialize](https://materializecss.com/breadcrumbs.html)
 - `breadcrumbs::tailwind` – [Tailwind CSS](https://tailwindcss.com/)
 - `breadcrumbs::uikit` – [UIkit](https://getuikit.com/docs/breadcrumb)
+- `breadcrumbs::mdb5` – [MDB5](https://mdbootstrap.com/docs/standard/navigation/breadcrumb/)
 (&lt;script&gt; tag, no visible output)
 - The path to a custom view: e.g. `partials.breadcrumbs`
 
