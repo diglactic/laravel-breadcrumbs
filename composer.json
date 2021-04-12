@@ -44,6 +44,9 @@
             "App\\Http\\": "tests/Http/",
             "Diglactic\\Breadcrumbs\\Tests\\": "tests/"
         }
+    }, 
+    "conflict": {
+        "davejamesmiller/laravel-breadcrumbs": "*"
     },
     "extra": {
         "laravel": {
