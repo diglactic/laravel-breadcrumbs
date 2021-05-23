@@ -34,17 +34,14 @@
     "autoload": {
         "psr-4": {
             "Diglactic\\Breadcrumbs\\": "src/"
-        },
-        "files": [
-            "src/deprecated.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Http\\": "tests/Http/",
             "Diglactic\\Breadcrumbs\\Tests\\": "tests/"
         }
-    }, 
+    },
     "conflict": {
         "davejamesmiller/laravel-breadcrumbs": "*"
     },
