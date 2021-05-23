@@ -48,14 +48,14 @@ class TemplatesTest extends TestCase
     /** @dataProvider viewProvider */
     public function testView($view)
     {
-        $html = Breadcrumbs::view("breadcrumbs::$view", 'category', $this->category)->toHtml();
+        $html = Breadcrumbs::view("breadcrumbs::{$view}", 'category', $this->category)->toHtml();
 
         $this->assertMatchesXmlSnapshot($html);
     }
 
     public function testCanResolveFacade()
     {
-        app(Breadcrumbs::class)->for('category', function ($trail, $category) {
+        resolve('breadcrumbs')->for('foo', function ($trail, $category) {
             $trail->parent('blog');
             $trail->push($category->title, url("blog/category/{$category->id}"));
         });
@@ -63,9 +63,9 @@ class TemplatesTest extends TestCase
 
     public function testCanReferenceDirectly()
     {
-        \Diglactic\Breadcrumbs\Breadcrumbs::for('category', function (\Diglactic\Breadcrumbs\Generator $trail, $category) {
+        \Diglactic\Breadcrumbs\Breadcrumbs::for('bar', function (\Diglactic\Breadcrumbs\Generator $trail) {
             $trail->parent('blog');
-            $trail->push($category->title, url("blog/category/{$category->id}"));
+            $trail->push('Bar', 'some/path');
         });
     }
 }

@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
-use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
 
 /**
@@ -182,14 +181,14 @@ class Manager
      *
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
-     * @return \Illuminate\Support\HtmlString The generated HTML.
+     * @return \Illuminate\Contracts\View\View The generated view.
      * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
      *                                                                      not registered.
      * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
      *                                                                 have an associated name.
      * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
      */
-    public function render(?string $name = null, ...$params): HtmlString
+    public function render(?string $name = null, ...$params): View
     {
         $view = config('breadcrumbs.view');
 

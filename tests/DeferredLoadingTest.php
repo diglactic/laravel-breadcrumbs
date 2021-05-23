@@ -8,7 +8,7 @@ use LogicException;
 
 class DeferredLoadingTest extends TestCase
 {
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         parent::getEnvironmentSetUp($app);
 
@@ -38,5 +38,6 @@ class DisabledConsoleKernel extends \Orchestra\Testbench\Console\Kernel
 {
     public function bootstrap()
     {
+        //
     }
 }

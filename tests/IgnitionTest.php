@@ -25,7 +25,7 @@ class IgnitionTest extends TestCase
         $this->assertMatchesSnapshot($solution->getDocumentationLinks());
     }
 
-    public function dataOneOrManyConfigFiles()
+    public function dataOneOrManyConfigFiles(): array
     {
         return [
             'Single config file' => [['routes/breadcrumbs.php']],

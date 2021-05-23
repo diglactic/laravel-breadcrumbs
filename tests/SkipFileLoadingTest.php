@@ -4,7 +4,7 @@ namespace Diglactic\Breadcrumbs\Tests;
 
 class SkipFileLoadingTest extends TestCase
 {
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         parent::getEnvironmentSetUp($app);
 

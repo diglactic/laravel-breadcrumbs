@@ -6,7 +6,7 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class SingleFileLoadingTest extends TestCase
 {
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         parent::getEnvironmentSetUp($app);
 

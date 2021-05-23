@@ -9,6 +9,9 @@ use LogicException;
 
 class BasicFunctionalityTest extends TestCase
 {
+    /** @var object */
+    private $post;
+
     protected function setUp(): void
     {
         parent::setUp();

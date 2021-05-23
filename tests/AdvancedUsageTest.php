@@ -286,8 +286,10 @@ class AdvancedUsageTest extends TestCase
 
     public function testBreadcrumbsSupportForArrowFunctions()
     {
-        Route::name('home')->get('/', function () { });
-        Route::name('blog.index')->get('/blog', function () { });
+        Route::name('home')->get('/', function () {
+        });
+        Route::name('blog.index')->get('/blog', function () {
+        });
 
         Breadcrumbs::for('home', function ($trail) {
             $trail->push('Some Data')

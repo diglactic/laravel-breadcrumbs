@@ -1,6 +1,5 @@
 For example:
 
-
 ```php
 Route::get('blog', function() {
     ...
