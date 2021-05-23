@@ -110,7 +110,7 @@ class FacadePhpDocTest extends TestCase
             ->implode(', ');
     }
 
-    private function returnTypeDoc(ReflectionType $reflectionType = null): ?string
+    private function returnTypeDoc(?ReflectionType $reflectionType = null): ?string
     {
         if (!$reflectionType) {
             return '';

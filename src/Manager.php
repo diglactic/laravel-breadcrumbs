@@ -116,7 +116,7 @@ class Manager
      * @param string|null $name The page name.
      * @return bool Whether there is a registered callback with that name.
      */
-    public function exists(string $name = null): bool
+    public function exists(?string $name = null): bool
     {
         if (is_null($name)) {
             try {
@@ -140,7 +140,7 @@ class Manager
      * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names  are)
      *                                                                      not registered.
      */
-    public function generate(string $name = null, ...$params): Collection
+    public function generate(?string $name = null, ...$params): Collection
     {
         $origName = $name;
 
@@ -186,7 +186,7 @@ class Manager
      * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
      *                                                                 have an associated name.
      */
-    public function view(string $view, string $name = null, ...$params): HtmlString
+    public function view(string $view, ?string $name = null, ...$params): HtmlString
     {
         $breadcrumbs = $this->generate($name, ...$params);
 
@@ -209,7 +209,7 @@ class Manager
      *                                                                 have an associated name.
      * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
      */
-    public function render(string $name = null, ...$params): HtmlString
+    public function render(?string $name = null, ...$params): HtmlString
     {
         $view = config('breadcrumbs.view');
 
@@ -223,13 +223,13 @@ class Manager
     /**
      * Get the last breadcrumb for the current page.
      *
-     * @return \stdClass|null The breadcrumb for the current page.
+     * @return object|null The breadcrumb for the current page.
      * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated
      *                                                                 name.
      * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
      *                                                                      not registered.
      */
-    public function current(): ?\stdClass
+    public function current(): ?object
     {
         return $this->generate()->where('current', '!==', false)->last();
     }
