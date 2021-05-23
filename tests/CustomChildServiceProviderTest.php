@@ -7,11 +7,9 @@ use Diglactic\Breadcrumbs\ServiceProvider;
 
 class CustomChildServiceProviderTest extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
-        return [
-            CustomChildServiceProvider::class,
-        ];
+        return [CustomChildServiceProvider::class];
     }
 
     public function testRender()

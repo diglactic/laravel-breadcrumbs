@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 
 class CustomPackageServiceProviderTest extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             BreadcrumbsServiceProvider::class,

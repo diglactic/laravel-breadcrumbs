@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class CustomManagerTest extends TestCase
 {
-    protected function resolveApplicationConfiguration($app)
+    protected function resolveApplicationConfiguration($app): void
     {
         parent::resolveApplicationConfiguration($app);
 
