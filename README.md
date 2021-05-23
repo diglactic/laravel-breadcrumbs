@@ -93,8 +93,8 @@ See the [Defining Breadcrumbs](#defining-breadcrumbs) section for more details.
 
 ### 3. Style
 
-By default, a [Bootstrap 5 breadcrumb list](https://getbootstrap.com/docs/5.0/components/breadcrumb/) will be
-rendered. To change this, initialize the config file by running this command:
+By default, a [Bootstrap 5 breadcrumb list](https://getbootstrap.com/docs/5.0/components/breadcrumb/) will be rendered.
+To change this, initialize the config file by running this command:
 
 ```bash
 php artisan vendor:publish --tag=breadcrumbs-config

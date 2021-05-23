@@ -11,21 +11,17 @@ abstract class TestCase extends TestbenchTestCase
 {
     use MatchesSnapshots;
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
-        return [
-            ServiceProvider::class,
-        ];
+        return [ServiceProvider::class];
     }
 
-    protected function getPackageAliases($app)
+    protected function getPackageAliases($app): array
     {
-        return [
-            'Breadcrumbs' => Breadcrumbs::class,
-        ];
+        return ['Breadcrumbs' => Breadcrumbs::class];
     }
 
-    protected function resolveApplicationConfiguration($app)
+    protected function resolveApplicationConfiguration($app): void
     {
         parent::resolveApplicationConfiguration($app);
 

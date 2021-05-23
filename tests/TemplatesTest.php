@@ -7,6 +7,9 @@ use Generator;
 
 class TemplatesTest extends TestCase
 {
+    /** @var object */
+    private $category;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -48,5 +51,21 @@ class TemplatesTest extends TestCase
         $html = Breadcrumbs::view("breadcrumbs::$view", 'category', $this->category)->toHtml();
 
         $this->assertMatchesXmlSnapshot($html);
+    }
+
+    public function testCanResolveFacade()
+    {
+        app(Breadcrumbs::class)->for('category', function ($trail, $category) {
+            $trail->parent('blog');
+            $trail->push($category->title, url("blog/category/{$category->id}"));
+        });
+    }
+
+    public function testCanReferenceDirectly()
+    {
+        \Diglactic\Breadcrumbs\Breadcrumbs::for('category', function (\Diglactic\Breadcrumbs\Generator $trail, $category) {
+            $trail->parent('blog');
+            $trail->push($category->title, url("blog/category/{$category->id}"));
+        });
     }
 }
