@@ -1,5 +1,4 @@
 @unless ($breadcrumbs->isEmpty())
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             @foreach ($breadcrumbs as $breadcrumb)
@@ -13,5 +12,4 @@
             @endforeach
         </ol>
     </nav>
-
 @endunless

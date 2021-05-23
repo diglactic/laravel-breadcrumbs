@@ -1,5 +1,4 @@
 @unless ($breadcrumbs->isEmpty())
-
     <nav>
         <div class="nav-wrapper">
             <div class="col s12">
@@ -15,5 +14,4 @@
             </div>
         </div>
     </nav>
-
 @endunless
