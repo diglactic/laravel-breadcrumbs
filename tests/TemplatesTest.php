@@ -55,14 +55,18 @@ class TemplatesTest extends TestCase
 
     public function testCanResolveFacade()
     {
-        resolve('breadcrumbs')->for('foo', function ($trail, $category) {
+        $this->expectNotToPerformAssertions();
+
+        \Breadcrumbs::for('foo', function ($trail, $category) {
             $trail->parent('blog');
             $trail->push($category->title, url("blog/category/{$category->id}"));
         });
     }
 
-    public function testCanReferenceDirectly()
+    public function testCanResolveDirectly()
     {
+        $this->expectNotToPerformAssertions();
+
         \Diglactic\Breadcrumbs\Breadcrumbs::for('bar', function (\Diglactic\Breadcrumbs\Generator $trail) {
             $trail->parent('blog');
             $trail->push('Bar', 'some/path');
