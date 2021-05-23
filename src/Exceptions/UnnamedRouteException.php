@@ -16,9 +16,7 @@ use Illuminate\Support\Str;
  */
 class UnnamedRouteException extends BaseException implements ProvidesSolution
 {
-    /**
-     * @var Route
-     */
+    /** @var Route */
     private $route;
 
     public function __construct(Route $route)
@@ -52,7 +50,6 @@ class UnnamedRouteException extends BaseException implements ProvidesSolution
 
         return BaseSolution::create('Give the route a name')
             ->setSolutionDescription("For example:
-
 
 ```php
 Route::$method('$uri', $action)->name('sample-name');

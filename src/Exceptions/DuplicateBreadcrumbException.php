@@ -14,9 +14,10 @@ use Illuminate\Support\Str;
  */
 class DuplicateBreadcrumbException extends BaseException implements ProvidesSolution
 {
+    /** @var string */
     private $name;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         parent::__construct("Breadcrumb name \"{$name}\" has already been registered");
 

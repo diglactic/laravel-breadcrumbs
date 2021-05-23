@@ -14,17 +14,20 @@ use Illuminate\Support\Str;
  */
 class InvalidBreadcrumbException extends BaseException implements ProvidesSolution
 {
+    /** @var string */
     private $name;
+
+    /** @var bool */
     private $isRouteBound = false;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         parent::__construct("Breadcrumb not found with name \"{$name}\"");
 
         $this->name = $name;
     }
 
-    public function setIsRouteBound()
+    public function setIsRouteBound(): void
     {
         $this->isRouteBound = true;
     }
