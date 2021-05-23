@@ -66,23 +66,6 @@ class Manager
     }
 
     /**
-     * Register a breadcrumb-generating callback for a page.
-     *
-     * For backwards-compatibility with v5.0.0 and below.
-     *
-     * @param string $name The name of the page.
-     * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may accept additional parameters.
-     * @return void
-     * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been used.
-     * @see self::for()
-     * @deprecated
-     */
-    public function register(string $name, callable $callback): void
-    {
-        $this->for($name, $callback);
-    }
-
-    /**
      * Register a closure to call before generating breadcrumbs for the current page.
      *
      * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
