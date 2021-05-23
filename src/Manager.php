@@ -7,6 +7,7 @@ use Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
 use Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException;
 use Diglactic\Breadcrumbs\Exceptions\ViewNotSetException;
 use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
@@ -163,21 +164,17 @@ class Manager
      * @param string $view The name of the view to render.
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
-     * @return \Illuminate\Support\HtmlString The generated HTML.
+     * @return \Illuminate\View\View The generated HTML.
      * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
      *                                                                      not registered.
      * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
      *                                                                 have an associated name.
      */
-    public function view(string $view, ?string $name = null, ...$params): HtmlString
+    public function view(string $view, ?string $name = null, ...$params): View
     {
         $breadcrumbs = $this->generate($name, ...$params);
 
-        // TODO: After dropping support for Laravel 5.8 and below, change this to return the view directly
-        // https://github.com/laravel/framework/pull/29600
-        $html = $this->viewFactory->make($view, compact('breadcrumbs'))->render();
-
-        return new HtmlString($html);
+        return $this->viewFactory->make($view, compact('breadcrumbs'));
     }
 
     /**
