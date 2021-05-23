@@ -34,7 +34,6 @@ Table of Contents
 - [Contributing](#contributing)
 - [License](#license)
 
-
 Compatibility Chart
 -------------------
 
@@ -51,58 +50,51 @@ For older Laravel versions, you'll need to use the
 Getting Started
 ---------------
 
-### 1. Install Laravel Breadcrumbs
+### 1. Install
 
 ```bash
 composer require diglactic/laravel-breadcrumbs
 ```
 
-### 2. Define your breadcrumbs
+### 2. Define
 
 Create a file called `routes/breadcrumbs.php` that looks like this:
 
 ```php
 <?php
 
+// Note: Laravel will automatically resolve `Breadcrumbs::` without
+// this import. This is nice for IDE syntax and refactoring.
+use Diglactic\Breadcrumbs\Breadcrumbs;
+
+// This import is also not required, and you could replace `BreadcrumbTrail $trail`
+//  with `$trail`. This is nice for IDE type checking and completion.
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
 // Home
-Breadcrumbs::for('home', function ($trail) {
+Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Home', route('home'));
 });
 
-// Home > About
-Breadcrumbs::for('about', function ($trail) {
-    $trail->parent('home');
-    $trail->push('About', route('about'));
-});
-
 // Home > Blog
-Breadcrumbs::for('blog', function ($trail) {
+Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Blog', route('blog'));
 });
 
 // Home > Blog > [Category]
-Breadcrumbs::for('category', function ($trail, $category) {
+Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('blog');
-    $trail->push($category->title, route('category', $category->id));
-});
-
-// Home > Blog > [Category] > [Post]
-Breadcrumbs::for('post', function ($trail, $post) {
-    $trail->parent('category', $post->category);
-    $trail->push($post->title, route('post', $post->id));
+    $trail->push($category->title, route('category', $category));
 });
 ```
 
 See the [Defining Breadcrumbs](#defining-breadcrumbs) section for more details.
 
+### 3. Style
 
-### 3. Choose a template
-
-By default, a [Bootstrap](https://getbootstrap.com/docs/4.0/components/breadcrumb/)-compatible ordered list will be
-rendered, so if you're using Bootstrap 4 you can skip this step.
-
-First, initialize the config file by running this command:
+By default, a [Bootstrap 5](https://getbootstrap.com/docs/5.0/components/breadcrumb/)-compatible ordered list will be
+rendered. To change this, initialize the config file by running this command:
 
 ```bash
 php artisan vendor:publish --tag=breadcrumbs-config
@@ -111,31 +103,30 @@ php artisan vendor:publish --tag=breadcrumbs-config
 Then, open `config/breadcrumbs.php` and edit this line:
 
 ```php
-    'view' => 'breadcrumbs::bootstrap4',
+'view' => 'breadcrumbs::bootstrap5',
 ```
 
 The possible values are:
 
 - `breadcrumbs::bootstrap5` – [Bootstrap 5](https://getbootstrap.com/docs/5.0/components/breadcrumb/)
 - `breadcrumbs::bootstrap4` – [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/breadcrumb/)
-- `breadcrumbs::bootstrap3` – [Bootstrap 3](https://getbootstrap.com/docs/3.4/components/#breadcrumbs)
-- `breadcrumbs::bootstrap2` – [Bootstrap 2](http://getbootstrap.com/2.3.2/components.html#breadcrumbs)
 - `breadcrumbs::bulma` – [Bulma](https://bulma.io/documentation/components/breadcrumb/)
 - `breadcrumbs::foundation6` – [Foundation 6](https://get.foundation/sites/docs/breadcrumbs.html)
 - `breadcrumbs::json-ld` – [JSON-LD Structured Data](https://developers.google.com/search/docs/data-types/breadcrumbs)
 - `breadcrumbs::materialize` – [Materialize](https://materializecss.com/breadcrumbs.html)
 - `breadcrumbs::tailwind` – [Tailwind CSS](https://tailwindcss.com/)
 - `breadcrumbs::uikit` – [UIkit](https://getuikit.com/docs/breadcrumb)
-(&lt;script&gt; tag, no visible output)
-- The path to a custom view: e.g. `partials.breadcrumbs`
+- Or, you can specify the path to a custom view, like `partials.breadcrumbs`
 
 See the [Custom Templates](#custom-templates) section for more details.
 
+You may also
+[specify a custom view at runtime](https://github.com/diglactic/laravel-breadcrumbs#switching-views-at-runtime).
 
-### 4. Output the breadcrumbs
+### 4. Output
 
-Finally, call `Breadcrumbs::render()` in the view for each page, passing it the name of the breadcrumb to use and any
-additional parameters – for example:
+Call `Breadcrumbs::render()` in the view for each page, passing it the name of the breadcrumb to use and any additional
+parameters:
 
 ```blade
 {{ Breadcrumbs::render('home') }}
@@ -161,7 +152,10 @@ The following examples should make it clear:
 The most simple breadcrumb is probably going to be your homepage, which will look something like this:
 
 ```php
-Breadcrumbs::for('home', function ($trail) {
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
      $trail->push('Home', route('home'));
 });
 ```
@@ -182,7 +176,7 @@ This example would be rendered like this:
 {{ Breadcrumbs::render('home') }}
 ```
 
-And results in this output:
+And result in this output:
 
 > Home
 
@@ -191,7 +185,10 @@ And results in this output:
 This is another static page, but this has a parent link before it:
 
 ```php
-Breadcrumbs::for('blog', function ($trail) {
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Blog', route('blog'));
 });
@@ -205,21 +202,23 @@ It would be rendered like this:
 {{ Breadcrumbs::render('blog') }}
 ```
 
-And results in this output:
+And result in this output:
 
 > [Home](#) / Blog
 
-Note that the default templates do not create a link for the last breadcrumb (the one for the current page), even when
-a URL is specified. You can override this by creating your own template – see [Custom Templates](#custom-templates) for
+Note that the default templates do not create a link for the last breadcrumb (the one for the current page), even when a
+URL is specified. You can override this by creating your own template – see [Custom Templates](#custom-templates) for
 more details.
-
 
 ### Dynamic titles and links
 
 This is a dynamically generated page pulled from the database:
 
 ```php
-Breadcrumbs::for('post', function ($trail, $post) {
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('post', function (BreadcrumbTrail $trail, $post) {
     $trail->parent('blog');
     $trail->push($post->title, route('post', $post));
 });
@@ -236,29 +235,50 @@ It results in this output:
 
 > [Home](#) / [Blog](#) / Post Title
 
-**Tip:** You can pass multiple parameters if necessary.
+You can also chain method calls to `$trail`. If you're using
+[PHP 7.4 and above with arrow function support](https://www.php.net/manual/en/functions.arrow.php), you might prefer the
+following, more concise, syntax for an identical output:
 
+```php
+<?php
+
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for(
+    'post',
+    fn (BreadcrumbTrail $trail, $post) => $trail
+        ->parent('blog')
+        ->push($post->title, route('post', $post))
+);
+```
 
 ### Nested categories
 
 Finally, if you have nested categories or other special requirements, you can call `$trail->push()` multiple times:
 
 ```php
-Breadcrumbs::for('category', function ($trail, $category) {
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('blog');
 
     foreach ($category->ancestors as $ancestor) {
-        $trail->push($ancestor->title, route('category', $ancestor->id));
+        $trail->push($ancestor->title, route('category', $ancestor));
     }
 
-    $trail->push($category->title, route('category', $category->id));
+    $trail->push($category->title, route('category', $category));
 });
 ```
 
 Alternatively, you could make a recursive function such as this:
 
 ```php
-Breadcrumbs::for('category', function ($trail, $category) {
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     if ($category->parent) {
         $trail->parent('category', $category->parent);
     } else {
@@ -279,7 +299,6 @@ And result in this:
 
 > [Home](#) / [Blog](#) / [Grandparent Category](#) / [Parent Category](#) / Category Title
 
-
 Custom Templates
 ----------------
 
@@ -289,7 +308,6 @@ To customize the HTML, create your own view file (e.g. `resources/views/partials
 
 ```blade
 @unless ($breadcrumbs->isEmpty())
-
     <ol class="breadcrumb">
         @foreach ($breadcrumbs as $breadcrumb)
 
@@ -301,37 +319,35 @@ To customize the HTML, create your own view file (e.g. `resources/views/partials
 
         @endforeach
     </ol>
-
 @endunless
 ```
 
-(See the [resources/views/ directory](https://github.com/diglactic/laravel-breadcrumbs/tree/master/resources/views) for the built-in templates.)
-
+(See the [resources/views/ directory](https://github.com/diglactic/laravel-breadcrumbs/tree/master/resources/views) for
+the built-in templates.)
 
 #### View data
 
-The view will receive an array called `$breadcrumbs`.
+The view will receive a [Collection](https://laravel.com/api/8.x/Illuminate/Support/Collection.html)
+called `$breadcrumbs`.
 
-Each breadcrumb is an object with the following keys:
+Each breadcrumb is an [object](https://www.php.net/manual/en/language.types.object.php) with the following keys:
 
 - `title` – The breadcrumb title
 - `url` – The breadcrumb URL, or `null` if none was given
 - Plus additional keys for each item in `$data` (see [Custom data](#custom-data))
 
-
 ### Update the config
 
-Then update your config file (`config/breadcrumbs.php`) with the custom view name, e.g.:
+Then, update your config file (`config/breadcrumbs.php`) with the custom view name:
 
 ```php
     'view' => 'partials.breadcrumbs', #--> resources/views/partials/breadcrumbs.blade.php
 ```
 
-
 ### Skipping the view
 
-Alternatively you can skip the custom view and call `Breadcrumbs::generate()` to get the breadcrumbs
-[Collection](https://laravel.com/api/8.x/Illuminate/Support/Collection.html) directly:
+Alternatively, you can skip the custom view and call `Breadcrumbs::generate()` to get the breadcrumbs collection
+directly:
 
 ```blade
 @foreach (Breadcrumbs::generate('post', $post) as $breadcrumb)
@@ -339,16 +355,13 @@ Alternatively you can skip the custom view and call `Breadcrumbs::generate()` to
 @endforeach
 ```
 
-
 Outputting Breadcrumbs
 ----------------------
 
-Call `Breadcrumbs::render()` in the view for each page, passing it the name of the breadcrumb to use and any additional parameters.
-
+Call `Breadcrumbs::render()` in the view for each page, passing it the name of the breadcrumb to use and any additional
+parameters.
 
 ### With Blade
-
-In the page (e.g. `resources/views/home.blade.php`):
 
 ```blade
 {{ Breadcrumbs::render('home') }}
@@ -360,53 +373,12 @@ Or with a parameter:
 {{ Breadcrumbs::render('category', $category) }}
 ```
 
-
-### With Blade layouts and @section
-
-In the page (e.g. `resources/views/home.blade.php`):
-
-```blade
-@extends('layout.name')
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('home') }}
-@endsection
-```
-
-Or using the shorthand syntax:
-
-```blade
-@extends('layout.name')
-
-@section('breadcrumbs', Breadcrumbs::render('home'))
-```
-
-And in the layout (e.g. `resources/views/layout/name.blade.php`):
-
-```blade
-@yield('breadcrumbs')
-```
-
-
-### Pure PHP (without Blade)
-
-In the page (e.g. `resources/views/home.php`):
-
-```blade
-<?= Breadcrumbs::render('home') ?>
-```
-
-Or use the longhand syntax if you prefer:
-
-```blade
-<?php echo Breadcrumbs::render('home') ?>
-```
-
-
 Structured Data
 ---------------
 
-To render breadcrumbs as JSON-LD [structured data](https://developers.google.com/search/docs/data-types/breadcrumbs) (usually for SEO reasons), use `Breadcrumbs::view()` to render the `breadcrumbs::json-ld` template in addition to the normal one. For example:
+To render breadcrumbs as JSON-LD [structured data](https://developers.google.com/search/docs/data-types/breadcrumbs) (
+usually for SEO reasons), use `Breadcrumbs::view()` to render the `breadcrumbs::json-ld` template in addition to the
+normal one. For example:
 
 ```blade
 <html>
@@ -437,19 +409,19 @@ Breadcrumbs::for('post', function ($trail, $post) {
 
 (If you prefer to use Microdata or RDFa you will need to create a [custom template](#custom-templates).)
 
-
 Route-Bound Breadcrumbs
 -----------------------
 
 In normal usage you must call `Breadcrumbs::render($name, $params...)` to render the breadcrumbs on every page. If you
 prefer, you can name your breadcrumbs the same as your routes and avoid this duplication.
 
-
 ### Name your routes
 
 Make sure each of your routes has a name. For example (`routes/web.php`):
 
 ```php
+use Illuminate\Support\Facades\Route;
+
 // Home
 Route::name('home')->get('/', 'HomeController@index');
 
@@ -457,22 +429,24 @@ Route::name('home')->get('/', 'HomeController@index');
 Route::name('post')->get('/post/{id}', 'PostController@show');
 ```
 
-For more details see [Named Routes](https://laravel.com/docs/8.x/routing#named-routes) in the Laravel documentation.
-
+For more details, see [Named Routes](https://laravel.com/docs/8.x/routing#named-routes) in the Laravel documentation.
 
 ### Name your breadcrumbs to match
 
-For each route, create a breadcrumb with the same name and parameters. For example (`routes/breadcrumbs.php`):
+For each route, create a breadcrumb with the same name and parameters. For example:
 
 ```php
+use App\Models\Post;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
 // Home
-Breadcrumbs::for('home', function ($trail) {
+Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
      $trail->push('Home', route('home'));
 });
 
 // Home > [Post]
-Breadcrumbs::for('post', function ($trail, $id) {
-    $post = Post::findOrFail($id);
+Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
     $trail->parent('home');
     $trail->push($post->title, route('post', $post));
 });
@@ -482,13 +456,14 @@ To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/8.x
 the name `errors.404`:
 
 ```php
-// Error 404
-Breadcrumbs::for('errors.404', function ($trail) {
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('errors.404', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Page Not Found');
 });
 ```
-
 
 ### Output breadcrumbs in your layout
 
@@ -498,7 +473,8 @@ Call `Breadcrumbs::render()` with no parameters in your layout file (e.g. `resou
 {{ Breadcrumbs::render() }}
 ```
 
-This will automatically output breadcrumbs corresponding to the current route. The same applies to `Breadcrumbs::generate()`:
+This will automatically output breadcrumbs corresponding to the current route. The same applies
+to `Breadcrumbs::generate()`:
 
 ```php
 $breadcrumbs = Breadcrumbs::generate();
@@ -510,11 +486,10 @@ And to `Breadcrumbs::view()`:
 {{ Breadcrumbs::view('breadcrumbs::json-ld') }}
 ```
 
-
 ### Route binding exceptions
 
 It will throw an `InvalidBreadcrumbException` if the breadcrumb doesn't exist, to remind you to create one. To disable
-this (e.g. if you have some pages with no breadcrumbs), first initialise the config file, if you haven't already:
+this (e.g. if you have some pages with no breadcrumbs), first iitialize the config file, if you haven't already:
 
 ```bash
 php artisan vendor:publish --tag=breadcrumbs-config
@@ -523,15 +498,14 @@ php artisan vendor:publish --tag=breadcrumbs-config
 Then open `config/breadcrumbs.php` and set this value:
 
 ```php
-    'missing-route-bound-breadcrumb-exception' => false,
+'missing-route-bound-breadcrumb-exception' => false,
 ```
 
 Similarly, to prevent it throwing an `UnnamedRouteException` if the current route doesn't have a name, set this value:
 
 ```php
-    'unnamed-route-exception' => false,
+'unnamed-route-exception' => false,
 ```
-
 
 ### Route model binding
 
@@ -544,11 +518,14 @@ Route::name('post')->get('/post/{post}', 'PostController@show');
 
 ```php
 // app/Http/Controllers/PostController.php
-use App\Post;
+
+use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Illuminate\Contracts\View\View;
 
 class PostController extends Controller
 {
-    public function show(Post $post) // <-- Implicit model binding happens here
+    public function show(Post $post): View // <-- Route bound model is injected here
     {
         return view('post/show', ['post' => $post]);
     }
@@ -557,7 +534,12 @@ class PostController extends Controller
 
 ```php
 // routes/breadcrumbs.php
-Breadcrumbs::for('post', function ($trail, $post) { // <-- The same Post model is injected here
+
+use App\Models\Post;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) { // <-- The same Post model is injected here
     $trail->parent('home');
     $trail->push($post->title, route('post', $post));
 });
@@ -568,7 +550,6 @@ This makes your code less verbose and more efficient by only loading the post fr
 For more details see [Route Model Binding](https://laravel.com/docs/8.x/routing#route-model-binding) in the Laravel
 documentation.
 
-
 ### Resourceful controllers
 
 Laravel automatically creates route names for resourceful controllers, e.g. `photo.index`, which you can use when
@@ -576,6 +557,10 @@ defining your breadcrumbs. For example:
 
 ```php
 // routes/web.php
+
+use App\Http\Controllers\PhotoController;
+use Illuminate\Support\Facades\Route;
+
 Route::resource('photo', PhotoController::class);
 ```
 
@@ -598,28 +583,32 @@ $ php artisan route:list
 ```php
 // routes/breadcrumbs.php
 
+use App\Models\Photo;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
 // Photos
-Breadcrumbs::for('photo.index', function ($trail) {
+Breadcrumbs::for('photo.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Photos', route('photo.index'));
 });
 
 // Photos > Upload Photo
-Breadcrumbs::for('photo.create', function ($trail) {
+Breadcrumbs::for('photo.create', function (BreadcrumbTrail $trail) {
     $trail->parent('photo.index');
     $trail->push('Upload Photo', route('photo.create'));
 });
 
 // Photos > [Photo Name]
-Breadcrumbs::for('photo.show', function ($trail, $photo) {
+Breadcrumbs::for('photo.show', function (BreadcrumbTrail $trail, Photo $photo) {
     $trail->parent('photo.index');
-    $trail->push($photo->title, route('photo.show', $photo->id));
+    $trail->push($photo->title, route('photo.show', $photo));
 });
 
 // Photos > [Photo Name] > Edit Photo
-Breadcrumbs::for('photo.edit', function ($trail, $photo) {
+Breadcrumbs::for('photo.edit', function (BreadcrumbTrail $trail, Photo $photo) {
     $trail->parent('photo.show', $photo);
-    $trail->push('Edit Photo', route('photo.edit', $photo->id));
+    $trail->push('Edit Photo', route('photo.edit', $photo));
 });
 ```
 
@@ -627,7 +616,6 @@ For more details see [Resource Controllers](https://laravel.com/docs/8.x/control
 Laravel documentation.
 
 (Related FAQ: [Why is there no Breadcrumbs::resource() method?](#why-is-there-no-breadcrumbsresource-method).)
-
 
 Advanced Usage
 --------------
@@ -644,7 +632,6 @@ The `$breadcrumb->url` value will be `null`.
 
 The default Bootstrap templates provided render this with a CSS class of "active", the same as the last breadcrumb,
 because otherwise they default to black text not grey which doesn't look right.
-
 
 ### Custom data
 
@@ -668,7 +655,6 @@ The `$data` array's entries will be merged into the breadcrumb as properties, so
 
 Do not use the keys `title` or `url` as they will be overwritten.
 
-
 ### Before and after callbacks
 
 You can register "before" and "after" callbacks to add breadcrumbs at the start/end of the trail. For example, to
@@ -682,7 +668,6 @@ Breadcrumbs::after(function ($trail) {
     }
 });
 ```
-
 
 ### Getting the current page breadcrumb
 
@@ -720,7 +705,6 @@ For more advanced filtering, use `Breadcrumbs::generate()` and Laravel's
 $current = Breadcrumbs::generate()->where('current', '!==', 'false)->last();
 ```
 
-
 ### Switching views at runtime
 
 You can use `Breadcrumbs::view()` in place of `Breadcrumbs::render()` to render a template other than the
@@ -746,7 +730,6 @@ Or you could call `Breadcrumbs::generate()` to get the breadcrumbs Collection an
 @include('partials.breadcrumbs2', ['breadcrumbs' => Breadcrumbs::generate('category', $category)])
 ```
 
-
 ### Overriding the "current" route
 
 If you call `Breadcrumbs::render()` or `Breadcrumbs::generate()` with no parameters, it will use the current route name
@@ -754,15 +737,13 @@ and parameters by default (as returned by Laravel's `Route::current()` method).
 
 You can override this by calling `Breadcrumbs::setCurrentRoute($name, $param1, $param2...)`.
 
-
 ### Checking if a breadcrumb exists
 
 To check if a breadcrumb with a given name exists, call `Breadcrumbs::exists('name')`, which returns a boolean.
 
-
 ### Defining breadcrumbs in a different file
 
-If you don't want to use `routes/breadcrumbs.php`, you can change it in the config file. First initialise the config
+If you don't want to use `routes/breadcrumbs.php`, you can change it in the config file. First initialize the config
 file, if you haven't already:
 
 ```bash
@@ -792,7 +773,6 @@ So you can use `glob()` to automatically find files using a wildcard:
 
 Or return an empty array `[]` to disable loading.
 
-
 ### Defining/using breadcrumbs in another package
 
 If you are creating your own package, simply load your breadcrumbs file from your service provider's `boot()` method:
@@ -812,7 +792,6 @@ class MyServiceProvider extends ServiceProvider
     }
 }
 ```
-
 
 ### Dependency injection
 
@@ -834,11 +813,11 @@ class MyServiceProvider extends ServiceProvider
 }
 ```
 
-
 ### Macros
 
-The breadcrumbs `Manager` class is [macroable](https://unnikked.ga/understanding-the-laravel-macroable-trait-dab051f09172),
-so you can add your own methods. For example:
+The breadcrumbs `Manager` class
+is [macroable](https://unnikked.ga/understanding-the-laravel-macroable-trait-dab051f09172), so you can add your own
+methods. For example:
 
 ```php
 Breadcrumbs::macro('pageTitle', function () {
@@ -855,7 +834,6 @@ Breadcrumbs::macro('pageTitle', function () {
 ```blade
 <title>{{ Breadcrumbs::pageTitle() }}</title>
 ```
-
 
 ### Advanced customizations
 
@@ -879,11 +857,10 @@ FAQ
 
 ### Why is there no `Breadcrumbs::resource()` method?
 
-
 A few people have suggested adding `Breadcrumbs::resource()` to match
-[`Route::resource()`](https://laravel.com/docs/8.x/controllers#resource-controllers), but no one has come up with a
-good implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly
-complex as a result.
+[`Route::resource()`](https://laravel.com/docs/8.x/controllers#resource-controllers), but no one has come up with a good
+implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly complex
+as a result.
 
 You can always create your own using `Breadcrumbs::macro()`. Here's a good starting point:
 
@@ -929,8 +906,8 @@ Troubleshooting
 #### General
 
 - Re-read the instructions and make sure you did everything correctly.
-- Start with the simple options and only use the advanced options (e.g. Route-Bound Breadcrumbs) once you understand
-how it works.
+- Start with the simple options and only use the advanced options (e.g. Route-Bound Breadcrumbs) once you understand how
+  it works.
 
 #### Class 'Breadcrumbs' not found
 
@@ -943,20 +920,20 @@ how it works.
     - Try putting `dd(__FILE__)` in the file to make sure it's loaded.
     - Try putting `dd($files)` in `ServiceProvider::registerBreadcrumbs()` to check the path is correct.
     - If not, try running `php artisan config:clear` (or manually delete `bootstrap/cache/config.php`) or update the
-    path in `config/breadcrumbs.php`.
+      path in `config/breadcrumbs.php`.
 - Make sure the breadcrumb name is correct.
     - If using Route-Bound Breadcrumbs, make sure it matches the route name exactly.
 - To suppress these errors when using Route-Bound Breadcrumbs (if you don't want breadcrumbs on some pages), either:
     - Register them with an empty closure (no push/parent calls), or
     - Set [`missing-route-bound-breadcrumb-exception` to `false`](#route-binding-exceptions) in the config file to
-    disable the check (but you won't be warned if you miss any pages).
+      disable the check (but you won't be warned if you miss any pages).
 
 #### ServiceProvider::registerBreadcrumbs(): Failed opening required ...
 
 - Make sure the path is correct.
 - If so, check the file ownership & permissions are correct.
 - If not, try running `php artisan config:clear` (or manually delete `bootstrap/cache/config.php`) or update the path
-in `config/breadcrumbs.php`.
+  in `config/breadcrumbs.php`.
 
 #### Undefined variable: breadcrumbs
 
@@ -969,15 +946,15 @@ Contributing
 [edit this file](https://github.com/diglactic/laravel-breadcrumbs/edit/master/README.md) and make a pull request.
 
 **Bug fixes:** Please fix it and open a [pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls).
-([See below](#creating-a-pull-request) for more detailed instructions.) Bonus points if you add a unit test to make
-sure it doesn't happen again!
+([See below](#creating-a-pull-request) for more detailed instructions.) Bonus points if you add a unit test to make sure
+it doesn't happen again!
 
 **New features:** Only features with a clear use case and well-considered API will be accepted. They must be documented
 and include unit tests. If in doubt, make a proof-of-concept (either code or documentation) and open a
-[pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls) to discuss the details. (Tip: If you want a feature
-that's too specific to be included by default, see [Macros](#macros) or [Advanced customizations](#advanced-customizations)
+[pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls) to discuss the details. (Tip: If you want a
+feature that's too specific to be included by default, see [Macros](#macros)
+or [Advanced customizations](#advanced-customizations)
 for ways to add them.)
-
 
 ### Creating a pull request
 
@@ -1013,7 +990,6 @@ git push -u YOUR_USERNAME YOUR_BRANCH
 ```
 
 Finally, browse to the repository on GitHub and create a pull request.
-
 
 ### Using your fork in a project
 
@@ -1062,7 +1038,6 @@ Then open `test-coverage/index.html` to view the results. Be aware of the
 [edge cases](https://phpunit.de/manual/current/en/code-coverage-analysis.html#code-coverage-analysis.edge-cases) in
 PHPUnit that can make it not-quite-accurate.
 
-
 ### New version of Laravel
 
 The following files will need to be updated to run tests against a new Laravel version:
@@ -1080,7 +1055,6 @@ If changes are required, also update:
 
 - [`README.md`](README.md)
     - [Compatibility Chart](README.md#compatibility-chart)
-
 
 License
 -------
