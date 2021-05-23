@@ -360,6 +360,11 @@ Or with a parameter:
 {{ Breadcrumbs::render('category', $category) }}
 ```
 
+Optionally you can pass view path to your custom breadcrumbs view, right before render() call:
+
+```blade
+{{ Breadcrumbs::usingView('partials.custom_breadcrumbs')->render() }}
+```
 
 ### With Blade layouts and @section
 

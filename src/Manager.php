@@ -35,6 +35,11 @@ class Manager
     protected $viewFactory;
 
     /**
+     * @var string The path to view file
+     */
+    protected $viewPath;
+
+    /**
      * @var array The registered breadcrumb-generating callbacks.
      */
     protected $callbacks = [];
@@ -59,6 +64,7 @@ class Manager
         $this->generator = $generator;
         $this->router = $router;
         $this->viewFactory = $viewFactory;
+        $this->viewPath = config('breadcrumbs.view');
     }
 
     /**
@@ -213,6 +219,24 @@ class Manager
     }
 
     /**
+     * Allows passing custom view path before calling render()
+     *
+     * ex. {{Breadcrumbs::usingView('partials.custom_breadcrumbs')->render()}}
+     *
+     * @param string|null $viewPath The name of the current page.
+     * @return \Diglactic\Breadcrumbs\Manager Manager instance
+     * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+     */
+    public function usingView(string $viewPath = null): Manager
+    {
+        if (!$viewPath || !\View::exists($viewPath)) {
+            throw new ViewNotSetException('Invalid custom breadcrumbs view path');
+        }
+        $this->viewPath = $viewPath;
+        return $this;
+    }
+
+    /**
      * Render breadcrumbs for a page with the default view.
      *
      * @param string|null $name The name of the current page.
@@ -224,13 +248,11 @@ class Manager
      */
     public function render(string $name = null, ...$params): HtmlString
     {
-        $view = config('breadcrumbs.view');
-
-        if (!$view) {
+        if (!$this->viewPath) {
             throw new ViewNotSetException('Breadcrumbs view not specified (check config/breadcrumbs.php)');
         }
 
-        return $this->view($view, $name, ...$params);
+        return $this->view($this->viewPath, $name, ...$params);
     }
 
     /**
