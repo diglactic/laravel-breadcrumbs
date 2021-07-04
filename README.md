@@ -52,8 +52,17 @@ Getting Started
 
 ### 1. Install
 
+Frist step: Install via composer:
 ```bash
 composer require diglactic/laravel-breadcrumbs
+```
+
+Second step: Add `Diglactic\Breadcrumbs\ServiceProvider::class` to your services providers in `config/app.php`:
+```php
+'providers' => [
+    ...
+    Diglactic\Breadcrumbs\ServiceProvider::class,
+]
 ```
 
 ### 2. Define
