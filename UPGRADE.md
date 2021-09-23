@@ -9,6 +9,7 @@
 - [Update Bootstrap 4 template to spec](https://github.com/diglactic/laravel-breadcrumbs/commit/4a9edc6bb3a2e1ce9fc443e170666d3724a78c4c)
 - [Change default breadcrumbs template to Bootstrap 5](https://github.com/diglactic/laravel-breadcrumbs/commit/0e22a48369969980c486645a9a187d8d3838961d#diff-2dd665476127636ab1abf77af6e994805fbe299b088c22dfee9db992896c7723L28)
 - [Remove legacy aliases for `DaveJamesMiller\Breadcrumbs`](https://github.com/diglactic/laravel-breadcrumbs/commit/410a67c33a2f438d42627e048d5cdf0551587cfb)
+- [Remove legacy Bootstrap 2 and 3 templates](https://github.com/diglactic/laravel-breadcrumbs/commit/2aeacfaa33f3b13400be0bdf3bb2357f7b78548c)
 
 If you've already upgraded your code when switching to `5.x`, this new version should be relatively seamless.
 
