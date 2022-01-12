@@ -34,7 +34,7 @@ class DeferredLoadingTest extends TestCase
     }
 }
 
-class DisabledConsoleKernel extends \Illuminate\Foundation\Console\Kernel
+class DisabledConsoleKernel extends \Orchestra\Testbench\Foundation\Console\Kernel
 {
     public function bootstrap()
     {
