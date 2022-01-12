@@ -39,6 +39,7 @@ Compatibility Chart
 
 | Laravel | Laravel Breadcrumbs |
 |---------|---------------------|
+| 9.x     | 7.x                 |
 | 8.x     | 7.x                 |
 | 7.x     | 7.x                 |
 | 6.x     | 7.x                 |
