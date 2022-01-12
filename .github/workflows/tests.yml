@@ -19,16 +19,9 @@ jobs:
 
         # Unsupported combinations
         exclude:
-          - laravel: 9.*
+          - laravel: [ 9.*, 8.* ]
             php: 7.*
-
-          - laravel: 8.*
-            php: 7.*
-
-          - laravel: 7.*
-            php: 8.*
-
-          - laravel: 6.*
+          - laravel: [ 7.*, 6.* ]
             php: 8.*
 
       # Continue running through matrix even if one combination fails
