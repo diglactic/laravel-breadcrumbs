@@ -851,7 +851,7 @@ class MyServiceProvider extends ServiceProvider
 {
     public function boot(Manager $breadcrumbs): void
     {
-        $breadcrumbs->register(...);
+        $breadcrumbs->for(...);
     }
 }
 ```
