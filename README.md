@@ -335,8 +335,14 @@ To customize the HTML, create your own view file similar to the following:
 @endunless
 ```
 
-(See the [resources/views/ directory](https://github.com/diglactic/laravel-breadcrumbs/tree/master/resources/views) for
-built-in templates.)
+If you want to work off an existing built-in template, run the following command:
+
+```bash
+php artisan vendor:publish --tag=breadcrumbs-views
+```
+
+This will copy all built-in templates into the `resources/views/vendor/breadcrumbs/` directory in your project, allowing
+you to make edits directly.
 
 #### View data
 
