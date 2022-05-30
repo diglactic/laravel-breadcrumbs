@@ -901,7 +901,7 @@ config file with the new class name:
 'generator-class' => Diglactic\Breadcrumbs\Generator::class,
 ```
 
-**Note:** configuration synax may change between releases.
+**Note:** configuration syntax may change between releases.
 
 
 FAQ
