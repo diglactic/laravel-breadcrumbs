@@ -250,7 +250,9 @@ class Manager
         }
 
         // Get the current route parameters
-        $params = array_values($route->parameters());
+        $params = array_values(array_map(function ($parameterName) use ($route) {
+            return $route->parameter($parameterName);
+        }, $route->parameterNames()));
 
         return [$name, $params];
     }
