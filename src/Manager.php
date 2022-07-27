@@ -250,10 +250,9 @@ class Manager
         }
 
         // Get the current route parameters
-        $signatureParameters = array_slice($route->signatureParameters(), 1);
-        $params = array_values(array_map(function ($parameter) use ($route) {
-            return $route->parameter($parameter->name);
-        }, $signatureParameters));
+        $params = array_values(array_map(function ($parameterName) use ($route) {
+            return $route->parameter($parameterName);
+        }, $route->parameterNames()));
 
         return [$name, $params];
     }
