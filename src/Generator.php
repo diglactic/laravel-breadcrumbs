@@ -70,7 +70,7 @@ class Generator
      * Should be called from the closure for a page, before `push()` is called.
      *
      * @param string $name The name of the parent page.
-     * @param array ...$params The parameters to pass to the closure.
+     * @param mixed ...$params The parameters to pass to the closure.
      * @return self
      * @throws InvalidBreadcrumbException
      */
