@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Facade;
  * Breadcrumbs facade - allows easy access to the Manager instance.
  *
  * @method static void for(string $name, callable $callback)
- * @method static void register(string $name, callable $callback)
  * @method static void before(callable $callback)
  * @method static void after(callable $callback)
  * @method static bool exists(string $name = NULL)
