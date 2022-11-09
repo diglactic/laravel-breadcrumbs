@@ -53,12 +53,13 @@ class Manager
      * @param string $name The name of the page.
      * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
      *                           accept additional parameters.
+     * @param bool $override Overrides an existing callback for the $name if set to true and one already exists.
      * @return void
      * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been used.
      */
-    public function for(string $name, callable $callback): void
+    public function for(string $name, callable $callback, bool $override = false): void
     {
-        if (isset($this->callbacks[$name])) {
+        if (isset($this->callbacks[$name]) && !$override) {
             throw new DuplicateBreadcrumbException($name);
         }
 
