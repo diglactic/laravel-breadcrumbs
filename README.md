@@ -45,8 +45,9 @@ Compatibility Chart
 | 7.x     | 8.x                 |
 | 6.x     | 8.x                 |
 
-For older Laravel versions, you'll need to use the
-[original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs).
+For older Laravel versions, reference
+the [original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs). All tags have been mirrored if
+you prefer referencing this package, but will provide no functional difference.
 
 
 Getting Started
