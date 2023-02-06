@@ -1,5 +1,11 @@
 # Upgrade Guide
 
+## Upgrading to 8.x from 7.x
+
+`8.x` introduces a single breaking change over `7.x` by passing request parameters injected by middleware into
+Breadcrumbs closures. If you're not mutating request parameters in your middleware, you can safely upgrade without any
+code changes. See [#52](https://github.com/diglactic/laravel-breadcrumbs/pull/52) for more details.
+
 ## Upgrading to 7.x from 6.x
 
 `7.x` introduces some breaking changes from `6.x`, mainly, housekeeping items.
@@ -30,12 +36,12 @@ Next, you'll need to update the following references. While we've made most clas
 project should work right away, it's a good idea to update these sooner than later as they'll be removed in a future
 version.
 
-| `davejamesmiller/laravel-breadcrumbs`                     | `diglactic/laravel-breadcrumbs`       |
-| --------------------------------------------------------- | ------------------------------------- |
-| DaveJamesMiller\Breadcrumbs\BreadcrumbsManager            | Diglactic\Breadcrumbs\Manager         |
-| DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator          | Diglactic\Breadcrumbs\Generator       |
-| DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider    | Diglactic\Breadcrumbs\ServiceProvider |
-| DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs           | Diglactic\Breadcrumbs\Breadcrumbs     |
+| `davejamesmiller/laravel-breadcrumbs`                  | `diglactic/laravel-breadcrumbs`       |
+|--------------------------------------------------------|---------------------------------------|
+| DaveJamesMiller\Breadcrumbs\BreadcrumbsManager         | Diglactic\Breadcrumbs\Manager         |
+| DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator       | Diglactic\Breadcrumbs\Generator       |
+| DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider | Diglactic\Breadcrumbs\ServiceProvider |
+| DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs        | Diglactic\Breadcrumbs\Breadcrumbs     |
 
 Once you're done, double-check your work by searching for `DaveJamesMiller\Breadcrumbs` within your application and
 making any necessary replacements. Note class name changes, like `BreadcrumbsManager` to `Manager`. If you've never gone
