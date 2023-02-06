@@ -43,7 +43,7 @@ class FacadePhpDocTest extends TestCase
     {
         // IDE Helper (v2.4.3) doesn't rewrite class names to FQCNs, so make sure only
         // fully qualified class names and built-in types are used in the Manager class
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             '/^(\\\\.*|array|object|bool|callable|int|mixed|null|string|void)$/',
             $class,
             "Must use fully qualified class names in BreadcrumbsManger PhpDoc: $line"
