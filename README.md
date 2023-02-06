@@ -39,11 +39,11 @@ Compatibility Chart
 
 | Laravel | Laravel Breadcrumbs |
 |---------|---------------------|
-| 10.x    | 7.x                 |
-| 9.x     | 7.x                 |
-| 8.x     | 7.x                 |
-| 7.x     | 7.x                 |
-| 6.x     | 7.x                 |
+| 10.x    | 8.x                 |
+| 9.x     | 8.x                 |
+| 8.x     | 8.x                 |
+| 7.x     | 8.x                 |
+| 6.x     | 8.x                 |
 
 For older Laravel versions, you'll need to use the
 [original GitHub project](https://github.com/davejamesmiller/laravel-breadcrumbs).
