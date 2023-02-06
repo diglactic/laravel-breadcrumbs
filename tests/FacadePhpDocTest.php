@@ -43,6 +43,12 @@ class FacadePhpDocTest extends TestCase
     {
         // IDE Helper (v2.4.3) doesn't rewrite class names to FQCNs, so make sure only
         // fully qualified class names and built-in types are used in the Manager class
+        // ----------------------------------------------------------------------------
+        // Note: we'll eventually need to update with `assertMatchesRegularExpression`.
+        // This is currently slated for removal in PHPUnit 10, but hasn't been enforced
+        // yet. Laravel 10 supports PHPUnit 10 and 9, so we've stuck with v9 for now.
+        // @see https://github.com/laravel/framework/blob/10.x/composer.json#L101
+        // @see https://github.com/sebastianbergmann/phpunit/issues/4086
         $this->assertRegExp(
             '/^(\\\\.*|array|object|bool|callable|int|mixed|null|string|void)$/',
             $class,
