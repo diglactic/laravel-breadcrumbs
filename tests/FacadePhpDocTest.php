@@ -104,11 +104,12 @@ class FacadePhpDocTest extends TestCase
                 }
 
                 if ($type = $parameter->getType()) {
-                    $doc = $type->getName() . ' ' . $doc;
+                    $doc = ($type->allowsNull() ? '?' : '') . $type->getName() . ' ' . $doc;
                 }
 
                 if ($parameter->isDefaultValueAvailable()) {
-                    $doc .= ' = ' . var_export($parameter->getDefaultValue(), true);
+                    $varExport = var_export($parameter->getDefaultValue(), true);
+                    $doc .= ' = ' . ($varExport !== 'NULL' ? $varExport : 'null');
                 }
 
                 return $doc;

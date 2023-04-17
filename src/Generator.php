@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
  */
 class Generator
 {
-    /** @var Collection Breadcrumbs currently being generated. */
+    /** @var \Illuminate\Support\Collection Breadcrumbs currently being generated. */
     protected $breadcrumbs;
 
     /** @var array The registered breadcrumb-generating callbacks. */
@@ -27,8 +27,8 @@ class Generator
      * @param array $after The registered 'after' callbacks.
      * @param string $name The name of the current page.
      * @param array $params The parameters to pass to the closure for the current page.
-     * @return Collection The generated breadcrumbs.
-     * @throws InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+     * @return \Illuminate\Support\Collection The generated breadcrumbs.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
      */
     public function generate(array $callbacks, array $before, array $after, string $name, array $params): Collection
     {
@@ -53,7 +53,7 @@ class Generator
      *
      * @param string $name The name of the page.
      * @param array $params The parameters to pass to the closure.
-     * @throws InvalidBreadcrumbException if the name is not registered.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is not registered.
      */
     protected function call(string $name, array $params): void
     {
@@ -72,7 +72,7 @@ class Generator
      * @param string $name The name of the parent page.
      * @param mixed ...$params The parameters to pass to the closure.
      * @return self
-     * @throws InvalidBreadcrumbException
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException
      */
     public function parent(string $name, ...$params): self
     {

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static void setCurrentRoute(string $name, ...$params)
  * @method static void clearCurrentRoute()
  * @mixin \Illuminate\Support\Traits\Macroable
- * @see Manager
+ * @see \Diglactic\Breadcrumbs\Manager
  */
 class Breadcrumbs extends Facade
 {

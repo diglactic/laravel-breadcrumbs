@@ -54,7 +54,7 @@ class Manager
      * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
      *                           accept additional parameters.
      * @return void
-     * @throws Exceptions\DuplicateBreadcrumbException If the given name has already been used.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been used.
      */
     public function for(string $name, callable $callback): void
     {
@@ -118,9 +118,9 @@ class Manager
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
      * @return \Illuminate\Support\Collection The generated breadcrumbs.
-     * @throws Exceptions\UnnamedRouteException if no name is given and the current route doesn't
+     * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
      *                                                                 have an associated name.
-     * @throws Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names  are)
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names  are)
      *                                                                      not registered.
      */
     public function generate(?string $name = null, ...$params): Collection
@@ -164,8 +164,10 @@ class Manager
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
      * @return \Illuminate\View\View The generated HTML.
-     * @throws Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-     * @throws Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
+     *                                                                      not registered.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
+     *                                                                 have an associated name.
      */
     public function view(string $view, ?string $name = null, ...$params): View
     {
@@ -180,9 +182,11 @@ class Manager
      * @param string|null $name The name of the current page.
      * @param mixed ...$params The parameters to pass to the closure for the current page.
      * @return \Illuminate\Contracts\View\View The generated view.
-     * @throws Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-     * @throws Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-     * @throws Exceptions\ViewNotSetException if no view has been set.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
+     *                                                                      not registered.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
+     *                                                                 have an associated name.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
      */
     public function render(?string $name = null, ...$params): View
     {
@@ -199,8 +203,10 @@ class Manager
      * Get the last breadcrumb for the current page.
      *
      * @return object|null The breadcrumb for the current page.
-     * @throws Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
-     * @throws Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated
+     *                                                                 name.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
+     *                                                                      not registered.
      */
     public function current(): ?object
     {
@@ -219,7 +225,8 @@ class Manager
      * ```
      *
      * @return array A two-element array consisting of the route name (string) and any parameters (array).
-     * @throws Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
+     * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated
+     *                                                                 name.
      */
     protected function getCurrentRoute(): array
     {

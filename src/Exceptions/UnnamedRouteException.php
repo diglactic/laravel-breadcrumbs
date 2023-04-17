@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
  */
 class UnnamedRouteException extends BaseException implements ProvidesSolution
 {
-    /** @var Route */
+    /** @var \Illuminate\Routing\Route */
     private $route;
 
     public function __construct(Route $route)
