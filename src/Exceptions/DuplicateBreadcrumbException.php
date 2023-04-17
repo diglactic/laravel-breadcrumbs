@@ -42,7 +42,7 @@ class DuplicateBreadcrumbException extends BaseException implements ProvidesSolu
 
         $links = [];
         $links['Defining breadcrumbs'] = 'https://github.com/diglactic/laravel-breadcrumbs#defining-breadcrumbs';
-        $links['Laravel Breadcrumbs documentation'] = 'https://github.com/diglactic/laravel-breadcrumbs#laravel-breadcrumbs';
+        $links['Laravel Breadcrumbs documentation'] = 'https://github.com/diglactic/laravel-breadcrumbs';
 
         return BaseSolution::create('Remove the duplicate breadcrumb')
             ->setSolutionDescription($description)
