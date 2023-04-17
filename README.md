@@ -699,7 +699,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 Breadcrumbs::after(function (BreadcrumbTrail $trail) {
     $page = (int) request('page', 1);
-    
+
     if ($page > 1) {
         $trail->push("Page {$page}");
     }
@@ -726,7 +726,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 Breadcrumbs::after(function (BreadcrumbTrail $trail) {
     $page = (int) request('page', 1);
-    
+
     if ($page > 1) {
         $trail->push("Page {$page}", null, ['current' => false]);
     }
@@ -755,7 +755,7 @@ $current = Breadcrumbs::generate()->where('current', '!==', false)->last();
 ### Switching views at runtime
 
 You can use `Breadcrumbs::view()` in place of `Breadcrumbs::render()` to render a template other than the
-[default one](#3-choose-a-template):
+[default one](#3-style):
 
 ```blade
 {{ Breadcrumbs::view('partials.breadcrumbs2', 'category', $category) }}
@@ -1012,9 +1012,8 @@ it doesn't happen again!
 **New features:** Only features with a clear use case and well-considered API will be accepted. They must be documented
 and include unit tests. If in doubt, make a proof-of-concept (either code or documentation) and open a
 [pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls) to discuss the details. (Tip: If you want a
-feature that's too specific to be included by default, see [Macros](#macros)
-or [Advanced customizations](#advanced-customizations)
-for ways to add them.)
+feature that's too specific to be included by default, see [Macros](#macros) or [Advanced Usage](#advanced-usage) for
+ways to add them.)
 
 ### Creating a pull request
 
@@ -1114,7 +1113,7 @@ The following files will need to be updated to run tests against a new Laravel v
 If changes are required, also update:
 
 - [`README.md`](README.md)
-    - [Compatibility Chart](README.md#compatibility-chart)
+    - [Compatibility Chart](#compatibility-chart)
 
 License
 -------
