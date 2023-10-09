@@ -1003,7 +1003,7 @@ Contributing
 ------------
 
 **Documentation:** If you think the documentation can be improved in any way, please do
-[edit this file](https://github.com/diglactic/laravel-breadcrumbs/edit/master/README.md) and make a pull request.
+[edit this file](https://github.com/diglactic/laravel-breadcrumbs/edit/main/README.md) and make a pull request.
 
 **Bug fixes:** Please fix it and open a [pull request](https://github.com/diglactic/laravel-breadcrumbs/pulls).
 ([See below](#creating-a-pull-request) for more detailed instructions.) Bonus points if you add a unit test to make sure
@@ -1025,11 +1025,11 @@ rm -rf vendor/diglactic/laravel-breadcrumbs
 composer install --prefer-source
 ```
 
-Then checkout the master branch and create your own local branch to work on:
+Then checkout the main branch and create your own local branch to work on:
 
 ```bash
 cd vendor/diglactic/laravel-breadcrumbs
-git checkout -t origin/master
+git checkout -t origin/main
 git checkout -b YOUR_BRANCH
 ```
 
