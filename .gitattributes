@@ -1,17 +1,15 @@
-# Exclude development files from exported zip files
-# To test this, commit the changes then run:
-# scripts/list-production-files.sh
+# Exclude development files from exported ZIP files
 
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
+/.github export-ignore
 
 /*.md export-ignore
 /*.svg export-ignore
 /*.xml export-ignore
 /*.yml export-ignore
 
-/scripts/ export-ignore
 /tests/ export-ignore
 
 # Ensure the correct line endings are used in tests on Windows
