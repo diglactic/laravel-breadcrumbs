@@ -236,7 +236,7 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
 });
 ```
 
-The `$post` object (probably an Eloquent [Model](https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html),
+The `$post` object (probably an Eloquent [Model](https://laravel.com/api/10.x/Illuminate/Database/Eloquent/Model.html),
 but could be anything) would be passed in from the view:
 
 ```blade
@@ -348,7 +348,7 @@ you to make edits directly.
 
 #### View data
 
-The view will receive a [Collection](https://laravel.com/api/8.x/Illuminate/Support/Collection.html)
+The view will receive a [Collection](https://laravel.com/api/10.x/Illuminate/Support/Collection.html)
 called `$breadcrumbs`.
 
 Each breadcrumb is an [object](https://www.php.net/manual/en/language.types.object.php) with the following keys:
@@ -460,7 +460,7 @@ Route::name('home')->get('/', 'HomeController@index');
 Route::name('post')->get('/post/{id}', 'PostController@show');
 ```
 
-For more details, see [Named Routes](https://laravel.com/docs/routing#named-routes) in the Laravel documentation.
+For more details, see [Named Routes](https://laravel.com/docs/10.x/routing#named-routes) in the Laravel documentation.
 
 ### Name your breadcrumbs to match
 
@@ -485,7 +485,7 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
 });
 ```
 
-To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/errors#custom-http-error-pages), use
+To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/10.x/errors#custom-http-error-pages), use
 the name `errors.404`:
 
 ```php
@@ -576,7 +576,7 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) { // <-- 
 
 This makes your code less verbose and more efficient by only loading the post from the database once.
 
-For more details see [Route Model Binding](https://laravel.com/docs/routing#route-model-binding) in the Laravel
+For more details see [Route Model Binding](https://laravel.com/docs/10.x/routing#route-model-binding) in the Laravel
 documentation.
 
 ### Resourceful controllers
@@ -641,7 +641,7 @@ Breadcrumbs::for('photo.edit', function (BreadcrumbTrail $trail, Photo $photo) {
 });
 ```
 
-For more details see [Resource Controllers](https://laravel.com/docs/controllers#resource-controllers) in the
+For more details see [Resource Controllers](https://laravel.com/docs/10.x/controllers#resource-controllers) in the
 Laravel documentation.
 
 (Related FAQ: [Why is there no Breadcrumbs::resource() method?](#why-is-there-no-breadcrumbsresource-method).)
@@ -742,7 +742,7 @@ Breadcrumbs::after(function (BreadcrumbTrail $trail) {
 ```
 
 For more advanced filtering, use `Breadcrumbs::generate()` and Laravel's
-[Collection class](https://laravel.com/api/8.x/Illuminate/Support/Collection.html) methods instead:
+[Collection class](https://laravel.com/api/10.x/Illuminate/Support/Collection.html) methods instead:
 
 ```php
 <?php
@@ -846,7 +846,7 @@ class MyServiceProvider extends ServiceProvider
 
 ### Dependency injection
 
-You can use [dependency injection](https://laravel.com/docs/providers#the-boot-method) to access the `Manager`
+You can use [dependency injection](https://laravel.com/docs/10.x/providers#the-boot-method) to access the `Manager`
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
 
 ```php
@@ -912,7 +912,7 @@ FAQ
 ### Why is there no `Breadcrumbs::resource()` method?
 
 A few people have suggested adding `Breadcrumbs::resource()` to match
-[`Route::resource()`](https://laravel.com/docs/controllers#resource-controllers), but no one has come up with a good
+[`Route::resource()`](https://laravel.com/docs/10.x/controllers#resource-controllers), but no one has come up with a good
 implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly complex
 as a result.
 
