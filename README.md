@@ -236,7 +236,7 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
 });
 ```
 
-The `$post` object (probably an Eloquent [Model](https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html),
+The `$post` object (probably an Eloquent [Model](https://laravel.com/api/10.x/Illuminate/Database/Eloquent/Model.html),
 but could be anything) would be passed in from the view:
 
 ```blade
@@ -348,7 +348,7 @@ you to make edits directly.
 
 #### View data
 
-The view will receive a [Collection](https://laravel.com/api/8.x/Illuminate/Support/Collection.html)
+The view will receive a [Collection](https://laravel.com/api/10.x/Illuminate/Support/Collection.html)
 called `$breadcrumbs`.
 
 Each breadcrumb is an [object](https://www.php.net/manual/en/language.types.object.php) with the following keys:
@@ -742,7 +742,7 @@ Breadcrumbs::after(function (BreadcrumbTrail $trail) {
 ```
 
 For more advanced filtering, use `Breadcrumbs::generate()` and Laravel's
-[Collection class](https://laravel.com/api/8.x/Illuminate/Support/Collection.html) methods instead:
+[Collection class](https://laravel.com/api/10.x/Illuminate/Support/Collection.html) methods instead:
 
 ```php
 <?php
