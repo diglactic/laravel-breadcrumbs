@@ -912,9 +912,9 @@ FAQ
 ### Why is there no `Breadcrumbs::resource()` method?
 
 A few people have suggested adding `Breadcrumbs::resource()` to match
-[`Route::resource()`](https://laravel.com/docs/10.x/controllers#resource-controllers), but no one has come up with a good
-implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly complex
-as a result.
+[`Route::resource()`](https://laravel.com/docs/10.x/controllers#resource-controllers), but no one has come up with a
+good implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly
+complex as a result.
 
 You can always create your own using `Breadcrumbs::macro()`. Here's a good starting point:
 
@@ -1110,10 +1110,14 @@ The following files will need to be updated to run tests against a new Laravel v
     - `jobs.phpunit.strategy.matrix.php` (PHP versions)
     - `jobs.phpunit.strategy.matrix.exclude` (Unsupported combinations)
 
-If changes are required, also update:
+And the following documentation, as needed:
 
 - [`README.md`](README.md)
     - [Compatibility Chart](#compatibility-chart)
+    - All links to `https://laravel.com/docs/*` and  `https://laravel.com/api/*`
+
+- [`UPGRADE.md`](UPGRADE.md)
+    - Add new section detailing any breaking package changes
 
 License
 -------
