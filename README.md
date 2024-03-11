@@ -1106,7 +1106,7 @@ The following files will need to be updated to run tests against a new Laravel v
 - [`composer.json`](composer.json)
     - `laravel/framework` (Laravel versions)
     - `php` (minimum PHP version)
-    - Other dependencies, as needed
+    - Other dependencies (prefer bumping to the highest-available versions that work for all Laravel/PHP combinations)
 
 - [`tests.yml`](.github/workflows/tests.yml)
     - `jobs.phpunit.strategy.matrix.laravel` (Laravel versions)
