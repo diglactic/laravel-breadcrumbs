@@ -44,12 +44,10 @@ class FacadePhpDocTest extends TestCase
         // IDE Helper (v2.4.3) doesn't rewrite class names to FQCNs, so make sure only
         // fully qualified class names and built-in types are used in the Manager class
         // ----------------------------------------------------------------------------
-        // Note: we'll eventually need to update with `assertMatchesRegularExpression`.
-        // This is currently slated for removal in PHPUnit 10, but hasn't been enforced
-        // yet. Laravel 10 supports PHPUnit 10 and 9, so we've stuck with v9 for now.
-        // @see https://github.com/laravel/framework/blob/10.x/composer.json#L101
-        // @see https://github.com/sebastianbergmann/phpunit/issues/4086
-        $this->assertRegExp(
+        // Note: this issue was patched in v2.9.1, which only supported Laravel 7+.
+        // Once we drop support for Laravel 6, we can entirely remove this test.
+        // @see https://github.com/barryvdh/laravel-ide-helper/issues/627
+        $this->assertMatchesRegularExpression(
             '/^(\\\\.*|array|object|bool|callable|int|mixed|null|string|void)$/',
             $class,
             "Must use fully qualified class names in BreadcrumbsManger PhpDoc: $line"
