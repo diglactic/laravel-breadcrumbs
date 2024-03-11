@@ -11,10 +11,10 @@
 
 A simple Laravel-style way to create breadcrumbs.
 
-This project is the [official fork](https://newsroom.diglactic.com/laravel-breadcrumbs/) of the fantastically original
-[Laravel Breadcrumbs by Dave James Miller](https://github.com/davejamesmiller/laravel-breadcrumbs) and wouldn't have
-been possible without
-[a bunch of awesome day-one contributors](https://github.com/davejamesmiller/laravel-breadcrumbs/graphs/contributors).
+This project is the official fork of the fantastically
+original [Laravel Breadcrumbs by Dave James Miller](https://github.com/davejamesmiller/laravel-breadcrumbs) and wouldn't
+have been possible
+without [a bunch of awesome day-one contributors](https://github.com/davejamesmiller/laravel-breadcrumbs/graphs/contributors).
 Thanks, all!
 
 
@@ -39,6 +39,7 @@ Compatibility Chart
 
 | Laravel | Laravel Breadcrumbs |
 |---------|---------------------|
+| 11.x    | 8.x                 |
 | 10.x    | 8.x                 |
 | 9.x     | 8.x                 |
 | 8.x     | 8.x                 |
@@ -117,7 +118,7 @@ The possible values are:
 - `breadcrumbs::bootstrap4` – [Bootstrap 4](https://getbootstrap.com/docs/4.0/components/breadcrumb/)
 - `breadcrumbs::bulma` – [Bulma](https://bulma.io/documentation/components/breadcrumb/)
 - `breadcrumbs::foundation6` – [Foundation 6](https://get.foundation/sites/docs/breadcrumbs.html)
-- `breadcrumbs::json-ld` – [JSON-LD Structured Data](https://developers.google.com/search/docs/data-types/breadcrumbs)
+- `breadcrumbs::json-ld` – [JSON-LD Structured Data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb)
 - `breadcrumbs::materialize` – [Materialize](https://materializecss.com/breadcrumbs.html)
 - `breadcrumbs::tailwind` – [Tailwind CSS](https://tailwindcss.com/)
 - `breadcrumbs::uikit` – [UIkit](https://getuikit.com/docs/breadcrumb)
@@ -141,8 +142,8 @@ parameters:
 {{ Breadcrumbs::render('category', $category) }}
 ```
 
-See the [Outputting Breadcrumbs](#outputting-breadcrumbs) section for other output options, and see
-[Route-Bound Breadcrumbs](#route-bound-breadcrumbs) for a way to link breadcrumb names to route names automatically.
+See the [Outputting Breadcrumbs](#outputting-breadcrumbs) section for other output options, and
+see [Route-Bound Breadcrumbs](#route-bound-breadcrumbs) for a way to link breadcrumb names to route names automatically.
 
 
 Defining Breadcrumbs
@@ -236,8 +237,9 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
 });
 ```
 
-The `$post` object (probably an Eloquent [Model](https://laravel.com/api/10.x/Illuminate/Database/Eloquent/Model.html),
-but could be anything) would be passed in from the view:
+The `$post` object (probably an
+Eloquent [Model](https://laravel.com/api/master/Illuminate/Database/Eloquent/Model.html), but could be anything) would
+be passed in from the view:
 
 ```blade
 {{ Breadcrumbs::render('post', $post) }}
@@ -348,7 +350,7 @@ you to make edits directly.
 
 #### View data
 
-The view will receive a [Collection](https://laravel.com/api/10.x/Illuminate/Support/Collection.html)
+The view will receive a [Collection](https://laravel.com/api/master/Illuminate/Support/Collection.html)
 called `$breadcrumbs`.
 
 Each breadcrumb is an [object](https://www.php.net/manual/en/language.types.object.php) with the following keys:
@@ -399,7 +401,8 @@ Or with a parameter:
 Structured Data
 ---------------
 
-To render breadcrumbs as JSON-LD [structured data](https://developers.google.com/search/docs/data-types/breadcrumbs)
+To render breadcrumbs as
+JSON-LD [structured data](httpshttps://developers.google.com/search/docs/appearance/structured-data/breadcrumb)
 (usually for SEO reasons), use `Breadcrumbs::view()` to render the `breadcrumbs::json-ld` template in addition to the
 normal one. For example:
 
@@ -460,7 +463,7 @@ Route::name('home')->get('/', 'HomeController@index');
 Route::name('post')->get('/post/{id}', 'PostController@show');
 ```
 
-For more details, see [Named Routes](https://laravel.com/docs/10.x/routing#named-routes) in the Laravel documentation.
+For more details, see [Named Routes](https://laravel.com/docs/routing#named-routes) in the Laravel documentation.
 
 ### Name your breadcrumbs to match
 
@@ -485,8 +488,8 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) {
 });
 ```
 
-To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/10.x/errors#custom-http-error-pages), use
-the name `errors.404`:
+To add breadcrumbs to a [custom 404 Not Found page](https://laravel.com/docs/errors#custom-http-error-pages), use the
+name `errors.404`:
 
 ```php
 Breadcrumbs::for('errors.404', function (BreadcrumbTrail $trail) {
@@ -576,7 +579,7 @@ Breadcrumbs::for('post', function (BreadcrumbTrail $trail, Post $post) { // <-- 
 
 This makes your code less verbose and more efficient by only loading the post from the database once.
 
-For more details see [Route Model Binding](https://laravel.com/docs/10.x/routing#route-model-binding) in the Laravel
+For more details see [Route Model Binding](https://laravel.com/docs/routing#route-model-binding) in the Laravel
 documentation.
 
 ### Resourceful controllers
@@ -641,7 +644,7 @@ Breadcrumbs::for('photo.edit', function (BreadcrumbTrail $trail, Photo $photo) {
 });
 ```
 
-For more details see [Resource Controllers](https://laravel.com/docs/10.x/controllers#resource-controllers) in the
+For more details see [Resource Controllers](https://laravel.com/docs/controllers#resource-controllers) in the
 Laravel documentation.
 
 (Related FAQ: [Why is there no Breadcrumbs::resource() method?](#why-is-there-no-breadcrumbsresource-method).)
@@ -742,7 +745,7 @@ Breadcrumbs::after(function (BreadcrumbTrail $trail) {
 ```
 
 For more advanced filtering, use `Breadcrumbs::generate()` and Laravel's
-[Collection class](https://laravel.com/api/10.x/Illuminate/Support/Collection.html) methods instead:
+[Collection class](https://laravel.com/api/master/Illuminate/Support/Collection.html) methods instead:
 
 ```php
 <?php
@@ -754,8 +757,8 @@ $current = Breadcrumbs::generate()->where('current', '!==', false)->last();
 
 ### Switching views at runtime
 
-You can use `Breadcrumbs::view()` in place of `Breadcrumbs::render()` to render a template other than the
-[default one](#3-style):
+You can use `Breadcrumbs::view()` in place of `Breadcrumbs::render()` to render a template other than
+the [default one](#3-style):
 
 ```blade
 {{ Breadcrumbs::view('partials.breadcrumbs2', 'category', $category) }}
@@ -846,7 +849,7 @@ class MyServiceProvider extends ServiceProvider
 
 ### Dependency injection
 
-You can use [dependency injection](https://laravel.com/docs/10.x/providers#the-boot-method) to access the `Manager`
+You can use [dependency injection](https://laravel.com/docs/providers#the-boot-method) to access the `Manager`
 instance if you prefer, instead of using the `Breadcrumbs::` facade:
 
 ```php
@@ -866,9 +869,8 @@ class MyServiceProvider extends ServiceProvider
 
 ### Macros
 
-The breadcrumbs `Manager` class is
-[macroable](https://unnikked.ga/understanding-the-laravel-macroable-trait-dab051f09172), so you can add your own
-methods. For example:
+The breadcrumbs `Manager` class is [macroable](https://tighten.com/insights/the-magic-of-laravel-macros/), so you can
+add your own methods. For example:
 
 ```php
 <?php
@@ -912,7 +914,7 @@ FAQ
 ### Why is there no `Breadcrumbs::resource()` method?
 
 A few people have suggested adding `Breadcrumbs::resource()` to match
-[`Route::resource()`](https://laravel.com/docs/10.x/controllers#resource-controllers), but no one has come up with a
+[`Route::resource()`](https://laravel.com/docs/controllers#resource-controllers), but no one has come up with a
 good implementation that a) is flexible enough to deal with translations, nested resources, etc., and b) isn't overly
 complex as a result.
 
@@ -1104,6 +1106,7 @@ The following files will need to be updated to run tests against a new Laravel v
 - [`composer.json`](composer.json)
     - `laravel/framework` (Laravel versions)
     - `php` (minimum PHP version)
+    - Other dependencies, as needed
 
 - [`tests.yml`](.github/workflows/tests.yml)
     - `jobs.phpunit.strategy.matrix.laravel` (Laravel versions)
@@ -1114,7 +1117,6 @@ And the following documentation, as needed:
 
 - [`README.md`](README.md)
     - [Compatibility Chart](#compatibility-chart)
-    - All links to `https://laravel.com/docs/*` and  `https://laravel.com/api/*`
 
 - [`UPGRADE.md`](UPGRADE.md)
     - Add new section detailing any breaking package changes
