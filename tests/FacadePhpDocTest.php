@@ -39,22 +39,6 @@ class FacadePhpDocTest extends TestCase
         }
     }
 
-    /** @dataProvider tags */
-    public function testFullyQualifiedClassNames($class, $line)
-    {
-        // IDE Helper (v2.4.3) doesn't rewrite class names to FQCNs, so make sure only
-        // fully qualified class names and built-in types are used in the Manager class
-        // ----------------------------------------------------------------------------
-        // Note: this issue was patched in v2.9.1, which only supported Laravel 7+.
-        // Once we drop support for Laravel 6, we can entirely remove this test.
-        // @see https://github.com/barryvdh/laravel-ide-helper/issues/627
-        $this->assertMatchesRegularExpression(
-            '/^(\\\\.*|array|object|bool|callable|int|mixed|null|string|void)$/',
-            $class,
-            "Must use fully qualified class names in BreadcrumbsManger PhpDoc: $line"
-        );
-    }
-
     public function testBreadcrumbsFacade()
     {
         $class = new ReflectionClass(Manager::class);
