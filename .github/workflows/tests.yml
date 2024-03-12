@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -69,6 +69,6 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
       - name: Report coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           file: build/logs/clover.xml
