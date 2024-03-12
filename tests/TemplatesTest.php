@@ -37,7 +37,7 @@ class TemplatesTest extends TestCase
         ];
     }
 
-    public function viewProvider(): Generator
+    public static function viewProvider(): Generator
     {
         foreach (glob(__DIR__ . '/../resources/views/*.blade.php') as $filename) {
             $name = basename($filename, '.blade.php');
@@ -53,7 +53,7 @@ class TemplatesTest extends TestCase
         $this->assertMatchesXmlSnapshot($html);
     }
 
-    public function testCanResolveFacade()
+    public function testCanResolveFacadeAbsolutely()
     {
         $this->expectNotToPerformAssertions();
 
@@ -63,7 +63,7 @@ class TemplatesTest extends TestCase
         });
     }
 
-    public function testCanResolveDirectly()
+    public function testCanResolveFacadeDirectly()
     {
         $this->expectNotToPerformAssertions();
 

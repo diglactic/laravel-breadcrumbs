@@ -30,5 +30,4 @@ class CustomGenerator extends Generator
     {
         return new Collection(['custom-generator']);
     }
-
 }

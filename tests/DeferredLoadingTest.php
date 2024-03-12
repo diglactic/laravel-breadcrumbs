@@ -17,7 +17,7 @@ class DeferredLoadingTest extends TestCase
         $app->config->set('breadcrumbs.files', [__DIR__ . '/routes/should-not-be-loaded.php']);
     }
 
-    protected function resolveApplicationConsoleKernel($app)
+    protected function resolveApplicationConsoleKernel($app): void
     {
         // Disable the console kernel because it calls loadDeferredProviders()
         // which defeats the purpose of this test
@@ -36,7 +36,7 @@ class DeferredLoadingTest extends TestCase
 
 class DisabledConsoleKernel extends \Orchestra\Testbench\Foundation\Console\Kernel
 {
-    public function bootstrap()
+    public function bootstrap(): void
     {
         //
     }
