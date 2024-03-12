@@ -4,6 +4,7 @@ namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Manager;
+use Generator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 use ReflectionClass;
@@ -13,7 +14,7 @@ use ReflectionType;
 
 class FacadePhpDocTest extends TestCase
 {
-    public function tags()
+    public static function tags(): Generator
     {
         $code = file_get_contents(__DIR__ . '/../src/Manager.php');
 
