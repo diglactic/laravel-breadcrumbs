@@ -17,16 +17,17 @@
     stopOnFailure="false"
     verbose="true"
 >
-    <!-- List of source files for code coverage checker -->
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">src/</directory>
-        </include>
-    </coverage>
     <!-- List of files with tests inside -->
     <testsuites>
         <testsuite name="Package Test Suite">
             <directory suffix="Test.php">tests/</directory>
         </testsuite>
     </testsuites>
+    
+    <!-- List of source files for code coverage checker -->
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src/</directory>
+        </include>
+    </coverage>
 </phpunit>
