@@ -17,6 +17,7 @@
     stopOnFailure="false"
     verbose="true"
 >
+    <!-- List of source files for code coverage checker -->
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src/</directory>
@@ -28,5 +29,4 @@
             <directory suffix="Test.php">tests/</directory>
         </testsuite>
     </testsuites>
-    <!-- List of source files for code coverage checker -->
 </phpunit>
