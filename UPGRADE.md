@@ -2,8 +2,8 @@
 
 ## Upgrading to 9.x from 8.x
 
-`9.x` drops support for Laravel v6 and v7 to support PHPUnit v10. There are no breaking changes. If you're on Laravel
-v8+, you may simply re-run `composer require diglactic/laravel-breadcrumbs`.
+`9.x` drops support for Laravel v6 and v7 to support PHPUnit v10. There are no other breaking changes. If you're on
+Laravel v8+, you may simply re-run `composer require diglactic/laravel-breadcrumbs`.
 
 ## Upgrading to 8.x from 7.x
 
