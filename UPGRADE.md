@@ -1,5 +1,10 @@
 # Upgrade Guide
 
+## Upgrading to 9.x from 8.x
+
+`9.x` drops support for Laravel v6 and v7 to support PHPUnit v10. There are no breaking changes. If you're on Laravel
+v8+, you may simply re-run `composer require diglactic/laravel-breadcrumbs`.
+
 ## Upgrading to 8.x from 7.x
 
 `8.x` introduces a single breaking change over `7.x` by passing request parameters injected by middleware into
@@ -27,7 +32,7 @@ to this repository. Note that this library requires at least Laravel 6.
 
 Begin by swapping libraries via Composer:
 
-```shell script
+```shell
 composer remove davejamesmiller/laravel-breadcrumbs
 composer require diglactic/laravel-breadcrumbs
 ```
