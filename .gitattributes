@@ -5,7 +5,6 @@
 /.gitignore export-ignore
 /.github export-ignore
 
-/*.md export-ignore
 /*.svg export-ignore
 /*.xml export-ignore
 /*.yml export-ignore
