@@ -1,4 +1,4 @@
-<p align="center"><img src="logo.svg" alt="Laravel Breadcrumbs"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/diglactic/laravel-breadcrumbs/main/logo.svg" alt="Laravel Breadcrumbs"></p>
 
 <p align="center">
     <a href="https://github.com/diglactic/laravel-breadcrumbs/actions?query=workflow%3Atests"><img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/diglactic/laravel-breadcrumbs/tests.yml?branch=main"></a>
