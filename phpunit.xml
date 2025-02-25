@@ -2,24 +2,15 @@
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-    backupGlobals="false"
     beStrictAboutChangesToGlobalState="true"
     beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutTestsThatDoNotTestAnything="true"
     bootstrap="vendor/autoload.php"
-    cacheResult="true"
     colors="true"
     displayDetailsOnPhpunitDeprecations="true"
-    executionOrder="depends,defects"
     failOnNotice="true"
-    failOnPhpunitDeprecation="true"
     failOnRisky="true"
     failOnWarning="true"
-    processIsolation="false"
-    requireCoverageMetadata="true"
-    shortenArraysForExportThreshold="10"
-    stopOnFailure="false"
 >
     <!-- List of files with tests inside -->
     <testsuites>
