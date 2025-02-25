@@ -25,12 +25,6 @@
     </testsuites>
 
     <!-- List of source files for code coverage checker -->
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-    </coverage>
-
     <source>
         <include>
             <directory suffix=".php">src</directory>
