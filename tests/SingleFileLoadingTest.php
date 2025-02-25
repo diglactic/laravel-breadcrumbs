@@ -8,7 +8,7 @@ class SingleFileLoadingTest extends TestCase
 {
     protected function getEnvironmentSetUp($app): void
     {
-        parent::getEnvironmentSetUp($app);
+        parent::defineEnvironment($app);
 
         $app->config->set('breadcrumbs.files', __DIR__ . '/routes/breadcrumbs.php');
     }

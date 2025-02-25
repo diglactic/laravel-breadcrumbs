@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 class IgnitionTest extends TestCase
 {
-    private function assertSolutionMatchesSnapshot(ProvidesSolution $exception)
+    private function assertSolutionMatchesSnapshot(ProvidesSolution $exception): void
     {
         $solution = $exception->getSolution();
 

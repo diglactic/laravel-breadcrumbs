@@ -4,16 +4,19 @@ namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator;
+use Illuminate\Config\Repository;
 use Illuminate\Support\Collection;
 
 class CustomGeneratorTest extends TestCase
 {
-    protected function resolveApplicationConfiguration($app): void
+    protected function defineEnvironment($app): void
     {
-        parent::resolveApplicationConfiguration($app);
+        parent::defineEnvironment($app);
 
         // Need to inject this early, before the package is loaded, to simulate it being set in the config file
-        $app['config']['breadcrumbs.generator-class'] = CustomGenerator::class;
+        tap($app['config'], function (Repository $config) {
+            $config->set('breadcrumbs.generator-class', CustomGenerator::class);
+        });
     }
 
     public function testCustomGenerator()

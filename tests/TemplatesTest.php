@@ -8,8 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 class TemplatesTest extends TestCase
 {
-    /** @var object */
-    private $category;
+    private object $category;
 
     protected function setUp(): void
     {

@@ -4,13 +4,12 @@ namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Contracts\Console\Kernel;
-use LogicException;
 
 class DeferredLoadingTest extends TestCase
 {
     protected function getEnvironmentSetUp($app): void
     {
-        parent::getEnvironmentSetUp($app);
+        parent::defineEnvironment($app);
 
         // If the service provider is loaded before the test starts, this file
         // will throw an exception.
@@ -26,7 +25,7 @@ class DeferredLoadingTest extends TestCase
 
     public function testDeferredLoading()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
 
         // This triggers the service provider boot, which loads the breadcrumbs,
         // which throws an exception, which is caught by PHPUnit.

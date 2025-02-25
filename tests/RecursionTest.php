@@ -6,14 +6,11 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class RecursionTest extends TestCase
 {
-    /** @var object */
-    private $category1;
+    private object $category1;
 
-    /** @var object */
-    private $category2;
+    private object $category2;
 
-    /** @var object */
-    private $category3;
+    private object $category3;
 
     protected function setUp(): void
     {
