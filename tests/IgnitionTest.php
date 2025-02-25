@@ -11,6 +11,7 @@ use ErrorException;
 use Facade\IgnitionContracts\ProvidesSolution;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class IgnitionTest extends TestCase
 {
@@ -33,7 +34,7 @@ class IgnitionTest extends TestCase
         ];
     }
 
-    /** @dataProvider dataOneOrManyConfigFiles */
+    #[DataProvider('dataOneOrManyConfigFiles')]
     public function testDuplicateBreadcrumbSolution(array $files)
     {
         Config::set('breadcrumbs.files', $files);
@@ -50,7 +51,7 @@ class IgnitionTest extends TestCase
         }
     }
 
-    /** @dataProvider dataOneOrManyConfigFiles */
+    #[DataProvider('dataOneOrManyConfigFiles')]
     public function testInvalidBreadcrumbSolution(array $files)
     {
         Config::set('breadcrumbs.files', $files);
@@ -63,7 +64,7 @@ class IgnitionTest extends TestCase
         }
     }
 
-    /** @dataProvider dataOneOrManyConfigFiles */
+    #[DataProvider('dataOneOrManyConfigFiles')]
     public function testMissingRouteBoundBreadcrumbSolution(array $files)
     {
         Config::set('breadcrumbs.files', $files);
