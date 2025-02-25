@@ -39,7 +39,7 @@ Compatibility Chart
 
 | Laravel | Laravel Breadcrumbs |
 |---------|---------------------|
-| 12.x    | 9.x                 |
+| 12.x    | 10.x                |
 | 11.x    | 9.x                 |
 | 10.x    | 9.x                 |
 | 9.x     | 9.x                 |
@@ -1101,6 +1101,7 @@ Then open `test-coverage/index.html` to view the results. Be aware of the
 PHPUnit that can make it not-quite-accurate.
 
 ### New version of Laravel
+
 
 The following files will need to be updated to run tests against a new Laravel version:
 
