@@ -1102,7 +1102,6 @@ PHPUnit that can make it not-quite-accurate.
 
 ### New version of Laravel
 
-
 The following files will need to be updated to run tests against a new Laravel version:
 
 - [`composer.json`](composer.json)
