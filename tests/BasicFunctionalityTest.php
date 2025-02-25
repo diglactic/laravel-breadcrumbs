@@ -9,8 +9,7 @@ use LogicException;
 
 class BasicFunctionalityTest extends TestCase
 {
-    /** @var object */
-    private $post;
+    private object $post;
 
     protected function setUp(): void
     {

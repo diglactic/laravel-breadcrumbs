@@ -4,11 +4,11 @@ namespace Diglactic\Breadcrumbs\Tests;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class TemplatesTest extends TestCase
 {
-    /** @var object */
-    private $category;
+    private object $category;
 
     protected function setUp(): void
     {
@@ -45,7 +45,7 @@ class TemplatesTest extends TestCase
         }
     }
 
-    /** @dataProvider viewProvider */
+    #[DataProvider('viewProvider')]
     public function testView($view)
     {
         $html = Breadcrumbs::view("breadcrumbs::{$view}", 'category', $this->category)->toHtml();

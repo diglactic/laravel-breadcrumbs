@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
-    backupGlobals="false"
-    backupStaticAttributes="false"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     beStrictAboutChangesToGlobalState="true"
+    beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
-    beStrictAboutTestsThatDoNotTestAnything="true"
     bootstrap="vendor/autoload.php"
-    cacheResult="true"
     colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    processIsolation="false"
-    stopOnFailure="false"
-    verbose="true"
+    displayDetailsOnPhpunitDeprecations="true"
+    failOnNotice="true"
+    failOnRisky="true"
+    failOnWarning="true"
 >
     <!-- List of files with tests inside -->
     <testsuites>
         <testsuite name="Package Test Suite">
-            <directory suffix="Test.php">tests/</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
-    
+
     <!-- List of source files for code coverage checker -->
-    <coverage processUncoveredFiles="true">
+    <source>
         <include>
-            <directory suffix=".php">src/</directory>
+            <directory>src</directory>
         </include>
-    </coverage>
+    </source>
 </phpunit>

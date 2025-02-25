@@ -6,11 +6,9 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class OutputTest extends TestCase
 {
-    /** @var object */
-    private $category;
+    private object $category;
 
-    /** @var string */
-    private $expectedHtml;
+    private string $expectedHtml;
 
     protected function setUp(): void
     {

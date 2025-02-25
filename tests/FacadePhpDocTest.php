@@ -30,7 +30,6 @@ class FacadePhpDocTest extends TestCase
 
         preg_match_all($pattern, $code, $matches, PREG_SET_ORDER);
 
-        $tags = [];
         foreach ($matches as $match) {
             foreach (explode('|', $match[1]) as $class) {
                 // Return the whole line too so it can be seen in the error message
