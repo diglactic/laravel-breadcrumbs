@@ -6,6 +6,7 @@
     beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
     bootstrap="vendor/autoload.php"
+    cacheDirectory=".phpunit.cache"
     colors="true"
     displayDetailsOnPhpunitDeprecations="true"
     failOnNotice="true"

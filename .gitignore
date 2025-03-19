@@ -3,10 +3,9 @@
 /vendor/
 
 # Test output
-/.phpunit.result.cache
+/.phpunit.cache/
 /build/
 /test-coverage/
-/tests/storage/
 
 # Operating system files
 .DS_Store
