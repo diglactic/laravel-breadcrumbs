@@ -1,11 +1,8 @@
 name: tests
 
 on:
-  # Run action on every push and PR
   push:
   pull_request:
-
-  # Run action at midnight to test against any updated dependencies
   schedule:
     - cron: '0 0 * * *'
 
@@ -13,19 +10,18 @@ jobs:
   phpunit:
     strategy:
       matrix:
-        php: [ 8.3, 8.2, 8.1 ]
-        laravel: [ 12.*, 11.*, 10.* ]
-        os: [ ubuntu-latest, windows-latest ]
-
-        # Unsupported combinations
+        php: [8.3, 8.2, 8.1]
+        laravel: ['10.*', '11.*', '12.*', '13.*']
+        os: [ubuntu-latest, windows-latest]
         exclude:
           - laravel: 12.*
             php: 8.1
-            
           - laravel: 11.*
             php: 8.1
-
-      # Continue running through matrix even if one combination fails
+          - laravel: 13.*
+            php: 8.2
+          - laravel: 13.*
+            php: 8.1
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
