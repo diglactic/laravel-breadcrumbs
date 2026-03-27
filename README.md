@@ -39,8 +39,9 @@ Compatibility Chart
 
 | Laravel | Laravel Breadcrumbs |
 |---------|---------------------|
-| 12.x    | 10.x                |
-| 11.x    | 10.x                |
+| 13.x    | 11.x                |
+| 12.x    | 11.x                |
+| 11.x    | 11.x                |
 | 10.x    | 10.x                |
 | 9.x     | 9.x                 |
 | 8.x     | 9.x                 |

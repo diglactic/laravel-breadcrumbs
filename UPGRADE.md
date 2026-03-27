@@ -1,5 +1,10 @@
 # Upgrade Guide
 
+## Upgrading to 11.x from 10.x
+
+`11.x` drops support for Laravel v10 and PHP v8.1 and v8.2. There are no other breaking changes. If you're on
+PHP v8.3+ and Laravel v11+, re-run `composer require diglactic/laravel-breadcrumbs`.
+
 ## Upgrading to 10.x from 9.x
 
 `10.x` drops support for Laravel v8 and v9 to support PHPUnit v11. If you're on Laravel v10+,
