@@ -1,7 +1,7 @@
 name: tests
 
 env:
-  # Preemptively opt-in to Node 24
+  # Preemptively opt-in to Node 24, can remove after 2026-06-02
   # @see https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
