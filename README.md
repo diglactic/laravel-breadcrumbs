@@ -1087,7 +1087,7 @@ vendor/bin/phpunit
 To run the unit tests and rebuild snapshots:
 
 ```bash
-vendor/bin/phpunit -d --update-snapshots
+UPDATE_SNAPSHOTS=true vendor/bin/phpunit
 ```
 
 To check code coverage:
