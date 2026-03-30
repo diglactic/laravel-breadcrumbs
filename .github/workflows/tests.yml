@@ -1,5 +1,10 @@
 name: tests
 
+env:
+  # Preemptively opt-in to Node 24, can remove after 2026-06-02
+  # @see https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   # Run action on every push and PR
   push:
@@ -14,14 +19,20 @@ jobs:
     strategy:
       matrix:
         php: [ 8.3, 8.2, 8.1 ]
-        laravel: [ 12.*, 11.*, 10.* ]
+        laravel: [ 13.*, 12.*, 11.*, 10.* ]
         os: [ ubuntu-latest, windows-latest ]
 
         # Unsupported combinations
         exclude:
+          - laravel: 13.*
+            php: 8.2
+
+          - laravel: 13.*
+            php: 8.1
+
           - laravel: 12.*
             php: 8.1
-            
+
           - laravel: 11.*
             php: 8.1
 
@@ -46,7 +57,7 @@ jobs:
       - name: Install dependencies
         run: |
           # Install Laravel version per matrix
-          composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction
 
           composer install --no-interaction
 
@@ -54,7 +65,8 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
       - name: Report coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: build/logs/clover.xml
+          files: build/logs/clover.xml
+          fail_ci_if_error: true
