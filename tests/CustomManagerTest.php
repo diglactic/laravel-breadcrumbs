@@ -26,7 +26,7 @@ class CustomManagerTest extends TestCase
 
 class CustomBreadcrumbs extends Manager
 {
-    public function generate(string $name = null, ...$params): Collection
+    public function generate(?string $name = null, ...$params): Collection
     {
         return new Collection(['custom-manager']);
     }
