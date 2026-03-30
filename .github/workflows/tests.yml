@@ -52,7 +52,7 @@ jobs:
       - name: Install dependencies
         run: |
           # Install Laravel version per matrix
-          composer require --dev "laravel/framework:${{ matrix.laravel }}" --no-interaction
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction
 
           composer install --no-interaction
 
