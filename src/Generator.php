@@ -49,7 +49,7 @@ class Generator
     }
 
     /**
-     * Call the closure to generate breadcrumbs for a page.
+     * Call the closure (or class method, if registered via Manager::rule()) to generate breadcrumbs for a page.
      *
      * @param string $name The name of the page.
      * @param array $params The parameters to pass to the closure.
@@ -61,7 +61,15 @@ class Generator
             throw new InvalidBreadcrumbException($name);
         }
 
-        $this->callbacks[$name]($this, ...$params);
+        $callback = $this->callbacks[$name];
+
+        // Registered via Manager::rule() as [class, method] - resolve the class through the container now, rather
+        // than when it was registered, so it can use constructor dependency injection like a controller.
+        if (is_array($callback) && is_string($callback[0])) {
+            $callback = [app($callback[0]), $callback[1]];
+        }
+
+        $callback($this, ...$params);
     }
 
     /**

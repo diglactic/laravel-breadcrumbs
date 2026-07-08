@@ -869,6 +869,68 @@ class MyServiceProvider extends ServiceProvider
 }
 ```
 
+### Class-based breadcrumbs
+
+Instead of a closure, you can register a breadcrumb using a class and method with `Breadcrumbs::rule()`:
+
+```php
+<?php
+
+use Diglactic\Breadcrumbs\Breadcrumbs;
+
+Breadcrumbs::rule('post', PostBreadcrumb::class);
+```
+
+```php
+<?php
+
+namespace App\Breadcrumbs;
+
+use App\Models\Post;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+class PostBreadcrumb
+{
+    public function __invoke(BreadcrumbTrail $trail, Post $post): void
+    {
+        $trail->parent('blog');
+        $trail->push($post->title, route('post', $post));
+    }
+}
+```
+
+The method defaults to `__invoke`, or you can specify a different one as the third argument:
+
+```php
+Breadcrumbs::rule('post', PostBreadcrumb::class, 'show');
+```
+
+Unlike `for()`, the class is **not** instantiated when you call `rule()` - it's resolved through Laravel's container
+only when that specific breadcrumb is actually generated. This means:
+
+- The class can use constructor dependency injection, the same as a controller.
+- If you're calling `rule()` from a package's service provider, none of your breadcrumb classes get instantiated on
+  requests that don't use them - only the one matching the current page (if any) is ever built.
+
+This is particularly useful if you're
+[defining breadcrumbs in another package](#defining-using-breadcrumbs-in-another-package) and want to avoid pulling in
+a closure's dependencies for every page on every request:
+
+```php
+<?php
+
+use Diglactic\Breadcrumbs\Manager;
+use Illuminate\Support\ServiceProvider;
+
+class MyServiceProvider extends ServiceProvider
+{
+    public function boot(Manager $breadcrumbs): void
+    {
+        $breadcrumbs->rule('post', PostBreadcrumb::class);
+    }
+}
+```
+
 ### Macros
 
 The breadcrumbs `Manager` class is [macroable](https://tighten.com/insights/the-magic-of-laravel-macros/), so you can

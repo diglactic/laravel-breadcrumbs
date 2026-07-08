@@ -66,6 +66,28 @@ class Manager
     }
 
     /**
+     * Register a breadcrumb-generating rule using a class method instead of a closure.
+     *
+     * Unlike for(), the class is not resolved until the breadcrumb is actually generated, so it may use constructor
+     * dependency injection like a controller, without paying the cost of instantiating it for every registered page
+     * on every request.
+     *
+     * @param string $name The name of the page.
+     * @param string $class The fully-qualified class name to resolve through the container.
+     * @param string $method The method to call on the resolved instance, with the same signature as a for() callback.
+     * @return void
+     * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been used.
+     */
+    public function rule(string $name, string $class, string $method = '__invoke'): void
+    {
+        if (isset($this->callbacks[$name])) {
+            throw new DuplicateBreadcrumbException($name);
+        }
+
+        $this->callbacks[$name] = [$class, $method];
+    }
+
+    /**
      * Register a closure to call before generating breadcrumbs for the current page.
      *
      * For example, this can be used to always prepend the homepage without needing to manually add it to each page.
