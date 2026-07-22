@@ -53,6 +53,9 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: xdebug
           extensions: fileinfo
+        # Fail if any errors occur during setup
+        env:
+          fail-fast: true
 
       - name: Install dependencies
         run: |
